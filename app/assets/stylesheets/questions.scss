@@ -1,0 +1,44 @@
+// Place all the styles related to the Questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.question-list-container {
+  border-right: 1px solid $gray-lighter;
+}
+
+.question-list, .user-question-list {
+  margin-top: 20px;
+  .question-text {
+    h1, h2, h3, h4, h5 {
+      font-size: 18px;
+      margin-top: 0px;
+    }
+  }
+}
+
+#new_question #question_text, .edit_question #question_text {
+  height: 400px;
+}
+
+.user-meta-text {
+  font-size: 11px;
+  #answered {
+    color: $brand-primary;
+  }
+}
+
+.tag-list {
+  margin-bottom: 10px;
+}
+
+.label-question-tag {
+  background-color: #fff;
+  color: #49166d;
+  border-color: #49166d;
+  border: 1px solid;
+
+  &[href]:hover, &[href]:active, &[href]:focus {
+    background-color: #49166d;
+    color: #fff;
+  }
+}

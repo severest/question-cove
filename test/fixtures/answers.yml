@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: |
+    *bold answer* and a <http://test.net>
+  question_id: one
+  user_id: sean
+
+two:
+  text: This is a plain answer
+  question_id: two
+  user_id: sean

@@ -1,0 +1,77 @@
+$brand-primary: #6c0;
+$navbar-height: 50px;
+
+// Custom bootstrap variables must be set or import before bootstrap itself.
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "select2";
+@import "select2-bootstrap.css";
+
+@import "answers";
+@import "questions";
+@import "users";
+
+body {
+  margin-top: $navbar-height + 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+.sorting-list {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  text-align: right;
+  li {
+    display: inline;
+    padding: 10px;
+    margin-left: 10px;
+  }
+  li.active, li:hover {
+    border-bottom: 1px solid $brand-primary;
+  }
+  a:hover, a:focus, a:active {
+    text-decoration: none;
+  }
+  li:hover {
+    cursor: pointer;
+  }
+}
+
+.help-block {
+  font-size: 12px;
+}
+
+footer {
+  color: $gray-light;
+  min-height: 150px;
+  padding-top: 50px;
+  font-size: 11px;
+}

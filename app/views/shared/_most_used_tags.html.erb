@@ -1,0 +1,6 @@
+<h4>Most used tags</h4>
+<div class="list-group">
+  <% tag_list.each do |tag| %>
+    <a href="<%= url_for questions_path %>?s=<%= tag %>" class="list-group-item"><span class="badge"><%= tag.taggings_count %></span><%= tag.name %></a>
+  <% end %>
+</div>

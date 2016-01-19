@@ -1,0 +1,5 @@
+<div class="tag-list">
+  <% tags.each do |tag| %>
+    <a href="<%= url_for questions_path %>?s=<%= tag %>"<span class="label label-default label-question-tag"><%= tag %></span></a>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <%= question.answers.count %> answers<br/>
+        <%= question.total_votes %> votes<br/>
+      </div>
+      <div class="col-md-9">
+        <div class="question-text showdown-content"><a href="<%= url_for question %>"><%= sanitize question.first_line %></a></div>
+        <%= render partial: 'shared/tag_list', locals: {tags: question.tag_list} %>
+      </div>
+    </div>
+  </div>
+  <%= render partial: 'shared/question_user_meta', locals: {obj: question, offset: nil} %>
+</div>
+<hr/>

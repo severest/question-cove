@@ -1,0 +1,1 @@
+Gravatarify.options[:default] = 'identicon'

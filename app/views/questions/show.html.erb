@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div class="row">
+        <div class="col-sm-1 text-center vote-count">
+          <%= voteup questionup_path(@question) %><br>
+          <strong><%= @question.total_votes %></strong><br>
+          <%= votedown questiondown_path(@question) %>
+        </div>
+        <div class="col-sm-11">
+          <% if can_edit_question %>
+            <div class="pull-right">
+              <%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-default' %>
+              <%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          <% end %>
+
+          <p id="question-text" class="showdown-content">
+            <%= sanitize @question.render_question %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+          <%= render partial: 'shared/tag_list', locals: {tags: @question.tag_list} %>
+        </div>
+        <%= render partial: 'shared/question_user_meta', locals: {obj: @question, offset: nil} %>
+      </div>
+
+      <h4><%= @question.answers.count%> answer(s)</h4>
+
+      <% @question.sorted_answers.each do |answer| %>
+        <div class="row">
+          <% if !@question.best_answer.nil? && @question.best_answer.id == answer.id %>
+            <div class="col-sm-1 text-center best-answer">
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </div>
+          <% end %>
+          <div class="col-sm-1 text-center vote-count">
+            <%= voteup answerup_path(answer) %><br>
+            <strong><%= answer.total_votes %></strong><br>
+            <%= votedown answerdown_path(answer) %>
+          </div>
+          <div class="col-sm-10">
+            <p><%= sanitize answer.render_answer %></p>
+          </div>
+        </div>
+        <% if can_edit_question && @question.best_answer.nil? %>
+          <div class="row">
+            <div class="col-sm-3 col-sm-offset-1">
+              <%= form_tag(best_answer_path(@question.id), method: "post") do %>
+                <input type="hidden" name="answer_id" value="<%= answer.id %>"/>
+                <button class="btn btn-block btn-primary" type="submit">Best answer</button>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <%= render partial: 'shared/answer_user_meta', locals: {obj: answer, offset: 8} %>
+        </div>
+        <hr/>
+      <% end %>
+
+      <h4>Your answer</h4>
+      <%= render 'answers/form' %>
+
+    </div>
+  </div>
+</div>

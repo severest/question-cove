@@ -1,0 +1,66 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_area :text, class: 'form-control showdown-edit' %>
+    <%= render 'shared/markdown_helper' %>
+  </div>
+  <div class="form-group">
+    <label>Tags</label>
+    <input type="hidden" class='form-control' id='tags' name="question[tag_list]" value="<%= @question.tag_list %>" />
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<script>
+$('#tags').select2({
+    multiple: true,
+    minimumInputLength: 1,
+    width: '100%',
+    id: function(tag){
+			return tag.name;
+		},
+    ajax: {
+        url: "<%= url_for search_tags_path %>",
+        dataType: 'json',
+        quietMillis: 250,
+        data: function (term, page) {
+            return {
+                s: term
+            };
+        },
+        results: function (data, page) {
+            return { results: data };
+        },
+        cache: false
+    },
+    initSelection: function(element, callback) {
+      var data = [];
+      if ($(element).val() !== "") {
+        var tags = $(element).val().split(',');
+        for (var i=0; i < tags.length; i++) {
+          data.push({
+            name: tags[i].trim()
+          });
+        }
+      }
+      callback(data);
+    },
+    formatResult: function (tag, container) { return '<div>' + tag.name + '</div>'; },
+		formatSelection: function (tag) { return tag.name; },
+    dropdownCssClass: "bigdrop", 
+    escapeMarkup: function (m) { return m; }
+});
+</script>

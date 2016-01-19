@@ -1,0 +1,23 @@
+// Place all the styles related to the Answers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.vote-count {
+  padding: 10px;
+  strong {
+    font-size: 20px;
+  }
+  .btn-block {
+    display: inline-block;
+  }
+}
+
+.best-answer {
+  color: #6c0;
+  font-size: 32px;
+  padding-top: 10px;
+}
+
+textarea#answer_text {
+  height: 100px;
+}
