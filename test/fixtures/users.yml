@@ -1,6 +1,5 @@
 sean:
-  ced_id: 884343
-  first_name: Sean
-  last_name: Everest
-  email: sean.everest@telus.com
+  first_name: Johnny
+  last_name: Test
+  email: test@test.net
   admin: false
