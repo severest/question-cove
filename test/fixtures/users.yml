@@ -1,5 +1,4 @@
 sean:
-  first_name: Johnny
-  last_name: Test
   email: test@test.net
-  admin: false
+  encrypted_password: 'jasjdfjaosdjf'
+  remember_token: <%= Clearance::Token.new %>

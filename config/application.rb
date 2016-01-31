@@ -24,5 +24,7 @@ module QuestionCove
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_view.sanitized_allowed_tags = ['strong', 'em', 'a', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'code', 'img', 'blockquote', 'br', 'p', 'div', 'li', 'ol', 'i', 'span', 'hr']
+
+    config.action_mailer.default_url_options = { :host => 'localhost' }
   end
 end

@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem 'mysql2', '~> 0.3.11'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,21 +31,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano3-puma', '~> 1.2.1'
+  gem 'web-console', '~> 2.0'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'letter_opener_web', '~> 1.2.0'
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
+  gem 'letter_opener_web'
 end
 
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -59,3 +55,4 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'select2-rails', '3.5.3'
 gem 'active_record_union', '~> 1.1.0'
 gem 'friendly_id', '~> 5.1.0'
+gem 'puma', '~> 2.15.3'

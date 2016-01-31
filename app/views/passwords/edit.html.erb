@@ -1,0 +1,20 @@
+<div id="clearance" class="container password-reset">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2><%= t(".title") %></h2>
+
+      <p><%= t(".description") %></p>
+
+      <%= form_for :password_reset,
+            url: user_password_path(@user, token: @user.confirmation_token),
+            html: { method: :put } do |form| %>
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.password_field :password, class: 'form-control' %>
+        </div>
+
+        <button class="btn btn-primary" type="submit"><%= t('.reset') %></button>
+      <% end %>
+    </div>
+  </div>
+</div>
