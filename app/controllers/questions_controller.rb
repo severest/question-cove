@@ -149,7 +149,7 @@ class QuestionsController < ApplicationController
     end
 
     def can_edit_question
-      @question.user == current_user || current_user.admin
+      @question.user == current_user
     end
 
     def can_edit_redirect
