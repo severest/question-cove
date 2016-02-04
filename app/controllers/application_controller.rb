@@ -7,8 +7,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # REMOVE THIS TO ACTUALLY HAVE USERS SIGN UP
   def require_login
-    sign_in(User.find(1))
+    if Rails.configuration.demo_mode
+      sign_in(User.find(1))
+    else
+      super
+    end
   end
 end
