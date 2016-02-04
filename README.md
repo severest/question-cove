@@ -10,8 +10,7 @@ REQUIRES MySQL 5.6 (Full text search)
 
 ```
 bundle install
-rake db:create
-rake db:migrate
+rake db:setup
 rails s
 ```
 
