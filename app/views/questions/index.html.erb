@@ -1,6 +1,6 @@
 <div class="container">
-  <%= render 'shared/demo' %>
-  
+  <%= render 'shared/demo' if Rails.configuration.demo_mode %>
+
   <div class="row">
     <div class="col-md-9 question-list-container">
 
