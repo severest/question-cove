@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
+  before_action :require_login
   before_action :set_question, only: [:show, :edit, :update, :destroy, :best_answer, :voteup, :votedown]
-  before_filter :can_edit_redirect, only: [:edit, :update, :destroy, :best_answer]
+  before_action :can_edit_redirect, only: [:edit, :update, :destroy, :best_answer]
   helper_method :can_edit_question
 
   # GET /questions
@@ -57,8 +58,11 @@ class QuestionsController < ApplicationController
       render json: []
     else
       tag_list = ActsAsTaggableOn::Tag.named_like(params[:s])
-      tag_list.push({:name => params[:s]}) unless tag_list.count > 0
-      render json: tag_list
+      if tag_list.count > 0
+        render json: tag_list
+      else
+        render json: [{:name => params[:s]}]
+      end
     end
   end
 

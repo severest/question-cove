@@ -1,14 +1,16 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration[4.2]
   def change
     create_table :users do |t|
-      t.timestamps null: false
-      t.string :email, null: false
-      t.string :encrypted_password, limit: 128, null: false
-      t.string :confirmation_token, limit: 128
-      t.string :remember_token, limit: 128, null: false
-    end
+      t.string :provider, null: false
+      t.string :uid, null: false
+      t.string :name
+      t.string :email
 
-    add_index :users, :email
-    add_index :users, :remember_token
+      t.timestamps
+
+    end
+    add_index :users, :provider
+    add_index :users, :uid
+    add_index :users, [:provider, :uid], unique: true
   end
 end

@@ -24,8 +24,8 @@
         <div class="col-md-12">
           <div class="pull-left">
             <div class="btn-group">
-              <a href="<%= url_for params.slice(:order).merge(type: 'questions') %>" class="btn btn-default <% if @type == 'questions' %>active<% end %>">Questions</a>
-              <a href="<%= url_for params.slice(:order).merge(type: 'answers') %>" class="btn btn-default <% if @type == 'answers' %>active<% end %>">Contributions</a>
+              <a href="<%= url_for params.slice(:order).merge(type: 'questions').permit! %>" class="btn btn-default <% if @type == 'questions' %>active<% end %>">Questions</a>
+              <a href="<%= url_for params.slice(:order).merge(type: 'answers').permit! %>" class="btn btn-default <% if @type == 'answers' %>active<% end %>">Contributions</a>
             </div>
           </div>
           <%= render 'shared/sorting_controls' %>

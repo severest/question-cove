@@ -1,5 +1,5 @@
 <ul class="sorting-list">
-  <a href="<%= url_for params.slice(:s, :type).merge(order: 'created_at') %>"><li <% if @order == 'created_at' %>class="active"<% end %>>Most recent</li></a>
-  <a href="<%= url_for params.slice(:s, :type).merge(order: 'views') %>"><li <% if @order == 'views' %>class="active"<% end %>>Most viewed</li></a>
-  <a href="<%= url_for params.slice(:s, :type).merge(order: 'total_votes') %>"><li <% if @order == 'total_votes' %>class="active"<% end %>>Most votes</li></a>
+  <a href="<%= url_for params.slice(:s, :type).merge(order: 'created_at').permit! %>"><li <% if @order == 'created_at' %>class="active"<% end %>>Most recent</li></a>
+  <a href="<%= url_for params.slice(:s, :type).merge(order: 'views').permit! %>"><li <% if @order == 'views' %>class="active"<% end %>>Most viewed</li></a>
+  <a href="<%= url_for params.slice(:s, :type).merge(order: 'total_votes').permit! %>"><li <% if @order == 'total_votes' %>class="active"<% end %>>Most votes</li></a>
 </ul>

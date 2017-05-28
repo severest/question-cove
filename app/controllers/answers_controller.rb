@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :require_login
   before_action :set_answer, only: [:voteup, :votedown]
 
   # POST /questions

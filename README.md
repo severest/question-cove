@@ -19,13 +19,24 @@ rails s
 
 Go to <http://localhost:3000/emails> to view emails sent by the application is development mode
 
-**Turning off demo mode**
 
-Set the following option in `config/application.rb` to false:
+## Authentication
 
-```
-config.demo_mode = true;
-```
+This app uses Google OAuth to authenticate users. To set up, follow these steps:
+
+- Go to 'https://console.developers.google.com'
+- Select your project.
+- Click 'Enable and manage APIs'.
+- Make sure "Contacts API" and "Google+ API" are on.
+- Go to Credentials, then select the "OAuth consent screen" tab on top, and provide an 'EMAIL ADDRESS' and a 'PRODUCT NAME'
+- Create credentials > OAuth client ID
+- Choose Web application
+- Enter `<host>/auth/google/callback` as a Authorized redirect URIs (`http://localhost:3000/auth/google/callback` for local development)
+- Enter the Client ID and secret in `config/initializers/omniauth.rb`
+- Add email domains to `config.domain_whitelist` in `config/application.rb`
+  - Allow all emails: `Regexp.union(/.*/)`
+  - Multiple domains: `Regexp.union(/@domain1.com/, /@domain2.com/)`
+
 
 ## Deployment
 

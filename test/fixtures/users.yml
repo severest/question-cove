@@ -1,4 +1,5 @@
 sean:
   email: test@test.net
-  encrypted_password: 'jasjdfjaosdjf'
-  remember_token: <%= Clearance::Token.new %>
+  name: Sean Test
+  provider: test
+  uid: 1

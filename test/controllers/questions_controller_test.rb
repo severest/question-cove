@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
   setup do
-    sign_in_as(users(:sean))
+    # sign_in_as(users(:sean))
     @question = questions(:one)
   end
 
@@ -19,30 +19,30 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test "should create question" do
     assert_difference('Question.count') do
-      post :create, question: { text: @question.text }
+      post :create, params: { question: { text: @question.text } }
     end
 
     assert_redirected_to question_path(assigns(:question))
   end
 
   test "should show question" do
-    get :show, id: @question
+    get :show, params: { id: @question }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @question
+    get :edit, params: { id: @question }
     assert_response :success
   end
 
   test "should update question" do
-    patch :update, id: @question, question: { text: @question.text }
+    patch :update, params: { id: @question, question: { text: @question.text } }
     assert_redirected_to question_path(assigns(:question))
   end
 
   test "should destroy question" do
     assert_difference('Question.count', -1) do
-      delete :destroy, id: @question
+      delete :destroy, params: { id: @question }
     end
 
     assert_redirected_to questions_path

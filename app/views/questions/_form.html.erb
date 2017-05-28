@@ -30,6 +30,7 @@ $('#tags').select2({
     minimumInputLength: 1,
     width: '100%',
     id: function(tag){
+      console.log('id', tag);
 			return tag.name;
 		},
     ajax: {
@@ -42,6 +43,7 @@ $('#tags').select2({
             };
         },
         results: function (data, page) {
+            console.log(data, page);
             return { results: data };
         },
         cache: false
@@ -59,8 +61,8 @@ $('#tags').select2({
       callback(data);
     },
     formatResult: function (tag, container) { return '<div>' + tag.name + '</div>'; },
-		formatSelection: function (tag) { return tag.name; },
-    dropdownCssClass: "bigdrop", 
+		formatSelection: function (tag) { console.log('sel', tag);return tag.name; },
+    dropdownCssClass: "bigdrop",
     escapeMarkup: function (m) { return m; }
 });
 </script>
