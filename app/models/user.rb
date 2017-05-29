@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :answers
 
   def self.from_omniauth(auth_hash)
-    byebug
     user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
     user.name = auth_hash['info']['name']
     user.email = auth_hash['info']['email']
