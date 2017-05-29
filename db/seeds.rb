@@ -1,6 +1,6 @@
-User.create({:id => 1, :email => 'test@example.com', :name => 'Tester 1')
-User.create({:id => 2, :email => 'another@example.com', :name => 'Tester 2')
-User.create({:id => 3, :email => 'onemore@example.com', :name => 'Tester 3')
+User.create({:id => 1, :email => 'test@example.com', :name => 'Tester 1'})
+User.create({:id => 2, :email => 'another@example.com', :name => 'Tester 2'})
+User.create({:id => 3, :email => 'onemore@example.com', :name => 'Tester 3'})
 
 Question.create({:id => 1, :text => '# Markdown styling
 This is an example of how to use markdown within the question body.
