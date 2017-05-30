@@ -10,7 +10,8 @@ REQUIRES MySQL 5.6 (Full text search)
 
 ```
 bundle install
-rake db:setup
+rake db:create
+rake db:migrate
 rails s
 ```
 
@@ -32,7 +33,7 @@ This app uses Google OAuth to authenticate users. To set up, follow these steps:
 - Choose Web application
 - Enter `<host>/auth/google/callback` as a Authorized redirect URIs (`http://localhost:3000/auth/google/callback` for local development)
 - Enter the Client ID and secret in `config/initializers/omniauth.rb`
-- Add email domains to `config.domain_whitelist` in `config/application.rb`
+- Add email domains to `config.domain_whitelist` in `config/initializers/omniauth.rb`
   - Allow all emails: `Regexp.union(/.*/)`
   - Multiple domains: `Regexp.union(/@domain1.com/, /@domain2.com/)`
 
