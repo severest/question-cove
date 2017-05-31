@@ -19,10 +19,14 @@
 
     <div class="navigation__user">
       <% if current_user %>
-        <a href="<%= url_for user_path(current_user) %>">
-          <%= gravatar_tag current_user.email, :size => 25 %> <%= current_user.email %>
-        </a>
-        <%= link_to 'Log Out', logout_path, method: :delete %>
+        <div class="navigation__user__link">
+          <a href="<%= url_for user_path(current_user) %>">
+            <%= gravatar_tag current_user.email, :size => 35 %> <%= current_user.email %>
+          </a>
+        </div>
+        <div class="navigation__user__logout">
+          <%= link_to 'Log Out', logout_path, method: :delete %>
+        </div>
       <% else %>
         <div class="navigation__user__notloggedin">
           Not logged in
