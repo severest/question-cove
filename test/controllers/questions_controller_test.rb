@@ -3,6 +3,7 @@ require 'test_helper'
 class QuestionsControllerTest < ActionController::TestCase
   setup do
     # sign_in_as(users(:sean))
+    session[:user_id] = users(:sean).id
     @question = questions(:one)
   end
 
