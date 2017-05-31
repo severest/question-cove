@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.text_area :text, class: 'form-control showdown-edit' %>
-    <%= render 'shared/markdown_helper' %>
-  </div>
+  <%= render partial: 'shared/markdown_helper', locals: {model: f} %>
+
   <div class="form-group">
     <label>Tags</label>
     <input type="hidden" class='form-control' id='tags' name="question[tag_list]" value="<%= @question.tag_list %>" />

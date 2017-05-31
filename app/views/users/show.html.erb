@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
       <div class="user-profile text-center">
         <%= gravatar_tag @user.email, :size => 125 %>
-        <h2><%= @user.email %></h2>
+        <h2><%= @user.name %></h2>
       </div>
       <hr/>
       <div>
@@ -18,7 +18,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-9 user-question-list">
+    <div class="col-md-8 user-question-list">
 
       <div class="row">
         <div class="col-md-12">

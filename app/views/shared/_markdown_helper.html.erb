@@ -1,1 +1,40 @@
+<div class="form-group showdown-form">
+  <ul class="sorting-list showdown-form-controls">
+    <li class="active"><a href="#" data-view="markdown">Markdown</a></li>
+    <li><a href="#" data-view="preview">Preview</a></li>
+  </ul>
+
+  <%= model.text_area :text, class: 'form-control showdown-edit', id: 'markdown' %>
+
+  <div class="showdown-content" id="preview" style="display: none;"></div>
+</div>
+
 <p class="help-block pull-right"><strong>*bold*</strong>&nbsp;&nbsp;&nbsp;<i>_italic_</i>&nbsp;&nbsp;&nbsp;<code>`code`</code>&nbsp;&nbsp;&nbsp;>quote&nbsp;&nbsp;&nbsp;&lt;link&gt;</p>
+
+
+
+<script>
+  var converter = new showdown.Converter();
+  $(function () {
+    $('.showdown-edit').on('keyup',function () {
+      convert(this);
+    });
+
+    convert('.showdown-edit');
+  });
+
+  function convert(id) {
+    text = $(id).val();
+    html = converter.makeHtml(text);
+    $('.showdown-content').html(html);
+  }
+
+  $('.showdown-form-controls a').click(function (evt) {
+    evt.preventDefault();
+    $('.showdown-form-controls li').removeClass('active');
+    $(evt.target).parent().addClass('active');
+    var view = $(evt.target).data('view');
+    $('#preview, #markdown').hide();
+    $('#' + view).show();
+  });
+</script>

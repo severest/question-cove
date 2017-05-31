@@ -1,23 +1,75 @@
 $brand-primary: #5F83EA;
 $brand-secondary: #03CAA3;
-$navbar-height: 50px;
 
 // Custom bootstrap variables must be set or import before bootstrap itself.
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "select2";
 @import "sel2";
+@import "showdown";
 
 @import "answers";
 @import "questions";
 @import "users";
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html,
 body {
-  margin-top: $navbar-height + 10px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.page {
+  height: 100%;
+  display: flex;
+}
+
+$nav-width: 250px;
+.navigation {
+  height: 100%;
+  min-width: $nav-width;
+  background: $brand-primary;
+  z-index: 10;
+
+  a {
+    color: white;
+
+    &:hover {
+      text-decoration: none;
+      color: darken(white, 5);
+    }
+  }
+
+  &__brand {
+    font-size: 30px;
+    font-weight: bold;
+    width: 20px;
+    line-height: 30px;
+    margin: 25px;
+  }
+
+  &__user {
+    position: fixed;
+    bottom: 0;
+    padding: 20px;
+    background-color: darken($brand-primary, 10);
+    width: $nav-width;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  padding-top: 30px;
+  overflow: auto;
+  box-shadow: -2px 0px 10px $gray-light;
+  z-index: 20;
 }
 
 textarea {
-  resize: none;
+  resize: vertical;
 }
 
 #error_explanation {

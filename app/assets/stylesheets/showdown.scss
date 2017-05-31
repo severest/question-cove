@@ -1,0 +1,16 @@
+.showdown-content {
+  img {
+    max-width: 100%;
+  }
+}
+
+textarea.showdown-edit {
+  height: 200px;
+}
+
+.showdown-form {
+  background-color: $gray-lighter;
+  padding: 20px;
+  border-radius: 5px;
+  min-height: 300px;
+}

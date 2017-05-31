@@ -6,7 +6,7 @@
         <%= question.total_votes %> votes<br/>
       </div>
       <div class="col-md-9">
-        <div class="question-text showdown-content"><a href="<%= url_for question %>"><%= sanitize question.first_line %></a></div>
+        <div class="question-text"><a href="<%= url_for question %>"><%= sanitize question.first_line %></a></div>
         <%= render partial: 'shared/tag_list', locals: {tags: question.tag_list} %>
       </div>
     </div>

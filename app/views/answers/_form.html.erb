@@ -12,10 +12,8 @@
   <% end %>
   <%= f.hidden_field :question_id %>
 
-  <div class="form-group">
-    <%= f.text_area :text, class: 'form-control' %>
-    <%= render 'shared/markdown_helper' %>
-  </div>
+  <%= render partial: 'shared/markdown_helper', locals: {model: f} %>
+
   <div class="form-group">
     <%= f.submit class: 'btn btn-primary' %>
   </div>

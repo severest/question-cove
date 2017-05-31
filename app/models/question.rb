@@ -41,8 +41,8 @@ class Question < ApplicationRecord
     %{# Question title
 
 Enter the details of your question here. Feel free to make use of
-markdown syntax if you are familiar with it. Your content will be displayed
-to other users as shown in the preview to the right.}
+markdown syntax if you are familiar with it. Use the preview tab
+above to see what it will look like.}
   end
 
   def sorted_answers

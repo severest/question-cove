@@ -11,24 +11,45 @@
 </head>
 <body>
 
-<%= render 'shared/navbar' %>
+<div class="page">
+  <div class="navigation">
+    <div class="navigation__brand">
+      <%= link_to 'Question Cove', root_path %>
+    </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 text-center">
-      <% if flash[:notice] %>
-        <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+    <div class="navigation__user">
+      <% if current_user %>
+        <a href="<%= url_for user_path(current_user) %>">
+          <%= gravatar_tag current_user.email, :size => 25 %> <%= current_user.email %>
+        </a>
+        <%= link_to 'Log Out', logout_path, method: :delete %>
+      <% else %>
+        <div class="navigation__user__notloggedin">
+          Not logged in
+        </div>
       <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-      <% end %>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <% if flash[:notice] %>
+            <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+          <% end %>
+          <% if flash[:alert] %>
+            <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+          <% end %>
+        </div>
+      </div>
+
+      <%= yield %>
     </div>
   </div>
 </div>
 
-<%= yield %>
 
-<%= render 'shared/footer' %>
 
 </body>
 </html>
