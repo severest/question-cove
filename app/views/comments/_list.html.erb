@@ -1,0 +1,21 @@
+<div class="comment-list__header">Comments</div>
+
+<% obj.comments.each do |comment| %>
+  <div class="comment-list__item">
+    <%= comment.text %>
+    <span class="comment-list__meta">
+      - <%= link_to obj.user.email, user_path(obj.user) %>, <%= time_ago_in_words(obj.created_at) %> ago
+    </span>
+  </div>
+<% end %>
+
+<%= form_tag(comments_path, method: "post") do %>
+  <input type="hidden" name="comment[post_id]" value="<%= obj.id %>" />
+  <input type="hidden" name="comment[post_type]" value="<%= obj.class.name %>" />
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Comment..." name="comment[text]">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+    </span>
+  </div>
+<% end %>

@@ -13,6 +13,7 @@ class Question < ApplicationRecord
   has_many :votes, as: :voteable, dependent: :destroy
   belongs_to :best_answer, class_name: "Answer", foreign_key: "best_answer_id"
   belongs_to :user
+  has_many :comments, as: :post, dependent: :destroy
 
   acts_as_taggable
 

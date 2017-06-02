@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :comments, only: [:create]
+
   get '/tags', to: 'questions#get_tags_like', as: 'search_tags'
 
   root 'questions#index'

@@ -43,6 +43,10 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        if Rails.application.config.slack_notifications
+          SlackNotifierJob.perform_later("A new question has been asked: *#{@question.first_line_for_slug.strip}* #{question_url(@question)}")
+        end
+
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else

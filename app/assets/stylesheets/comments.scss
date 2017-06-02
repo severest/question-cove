@@ -1,0 +1,17 @@
+.comment-list {
+  &__header {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  &__item {
+    margin-bottom: 3px;
+  }
+
+  &__meta {
+    font-size: 11px;
+    display: block;
+    margin-left: 17px;
+  }
+}

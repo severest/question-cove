@@ -2,6 +2,8 @@ class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :user
   has_many :votes, as: :voteable, dependent: :destroy
+  has_many :comments, as: :post, dependent: :destroy
+
   validates :text, presence: true
 
   @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)

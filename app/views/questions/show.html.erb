@@ -29,6 +29,12 @@
         <%= render partial: 'shared/question_user_meta', locals: {obj: @question, offset: nil} %>
       </div>
 
+      <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+          <%= render partial: 'comments/list', locals: {obj: @question} %>
+        </div>
+      </div>
+
       <h4><%= @question.answers.count%> answer(s)</h4>
 
       <% @question.sorted_answers.each do |answer| %>
@@ -60,6 +66,13 @@
         <div class="row">
           <%= render partial: 'shared/answer_user_meta', locals: {obj: answer, offset: 8} %>
         </div>
+
+        <div class="row">
+          <div class="col-md-7 col-md-offset-1">
+            <%= render partial: 'comments/list', locals: {obj: answer} %>
+          </div>
+        </div>
+
         <hr/>
       <% end %>
 

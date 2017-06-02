@@ -11,8 +11,9 @@ $brand-secondary: #03CAA3;
 @import "answers";
 @import "questions";
 @import "users";
+@import "comments";
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 html,
 body {

@@ -3,10 +3,10 @@
 one:
   text: |
     *bold answer* and a <http://test.net>
-  question_id: one
-  user_id: sean
+  question: one
+  user: sean
 
 two:
   text: This is a plain answer
-  question_id: two
-  user_id: sean
+  question: two
+  user: sean
