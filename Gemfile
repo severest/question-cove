@@ -24,7 +24,7 @@ gem 'jbuilder'
 # Use Capistrano for deployment
 group :development do
   gem 'byebug', platform: :mri
-  gem 'capistrano', '~> 3.6'
+  gem 'capistrano', '3.6.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano3-puma', '~> 1.2.1'
   gem 'web-console', '>= 3.3.0'

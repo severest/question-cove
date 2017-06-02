@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'question-cove'
-set :repo_url, 'git@github.com:severest/question-cove.git'
+set :repo_url, 'https://github.com/severest/question-cove.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
