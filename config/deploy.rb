@@ -24,7 +24,7 @@ set :deploy_to, '~/question-cove'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/initializers/omniauth.rb'
+append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/initializers/omniauth.rb', 'config/initializers/slack.rb'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
