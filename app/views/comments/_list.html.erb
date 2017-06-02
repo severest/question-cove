@@ -4,7 +4,7 @@
   <div class="comment-list__item">
     <%= comment.text %>
     <span class="comment-list__meta">
-      - <%= link_to obj.user.email, user_path(obj.user) %>, <%= time_ago_in_words(obj.created_at) %> ago
+      - <%= link_to comment.user.email, user_path(comment.user) %>, <%= time_ago_in_words(comment.created_at) %> ago
     </span>
   </div>
 <% end %>
