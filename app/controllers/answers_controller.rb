@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   before_action :require_login
-  before_action :set_answer, only: [:voteup, :votedown]
+  before_action :set_answer, only: [:voteup, :votedown, :edit, :update, :destroy]
+  before_action :can_edit_redirect, only: [:edit, :update, :destroy]
 
   # POST /questions
   # POST /questions.json
@@ -51,6 +52,30 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @answer.update(answer_params)
+        format.html { redirect_to @answer.question, notice: 'Answer was successfully updated.' }
+        format.json { render :show, status: :ok, location: @answer.question }
+      else
+        format.html { render :edit }
+        format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    question = @answer.question
+    @answer.destroy
+    respond_to do |format|
+      format.html { redirect_to question, notice: 'Answer was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
@@ -70,5 +95,13 @@ class AnswersController < ApplicationController
       vote.user = current_user
       vote.vote = value
       @answer.votes.push(vote)
+    end
+
+    def can_edit_answer
+      @answer.user == current_user
+    end
+
+    def can_edit_redirect
+      redirect_to @answer.question unless can_edit_answer
     end
 end

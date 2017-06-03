@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/questions/:id/down', to: 'questions#votedown', as: 'questiondown'
   post '/questions/:id/best_answer', to: 'questions#best_answer', as: 'best_answer'
 
-  resources :answers, only: [:create]
+  resources :answers, only: [:create, :edit, :update, :destroy]
   post '/answers/:id/up', to: 'answers#voteup', as: 'answerup'
   post '/answers/:id/down', to: 'answers#votedown', as: 'answerdown'
 

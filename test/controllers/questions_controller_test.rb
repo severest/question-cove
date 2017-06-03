@@ -23,6 +23,14 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not create question without login" do
+    assert_no_difference('Question.count') do
+      post :create, params: { question: { text: @question.text } }
+    end
+
+    assert_redirected_to login_url
+  end
+
   test "should create question" do
     session[:user_id] = users(:sean).id
     assert_difference('Question.count') do

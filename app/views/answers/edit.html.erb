@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="question-text">
+            <%= sanitize @answer.question.render_question %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+          <%= render partial: 'shared/tag_list', locals: {tags: @answer.question.tag_list} %>
+        </div>
+        <%= render partial: 'shared/question_user_meta', locals: {obj: @answer.question, offset: nil} %>
+      </div>
+
+      <hr/>
+
+      <%= render 'answers/form' %>
+
+    </div>
+  </div>
+</div>

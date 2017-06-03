@@ -16,3 +16,15 @@
 //= require bootstrap
 //= require select2
 //= require_tree .
+
+$(document).ready(function() {
+  // enable highlightjs
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  // close flash alerts
+  $('.flash-alert button').click(function (e) {
+    $(e.currentTarget).parent().remove();
+  });
+});

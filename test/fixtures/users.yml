@@ -3,3 +3,9 @@ sean:
   name: Sean Test
   provider: test
   uid: 1
+
+john:
+  email: johnny@test.net
+  name: Johnny Test
+  provider: test
+  uid: 2
