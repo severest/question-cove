@@ -52,10 +52,22 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not get edit with wrong user" do
+    session[:user_id] = users(:john).id
+    get :edit, params: { id: @question }
+    assert_redirected_to root_path
+  end
+
   test "should update question" do
     session[:user_id] = users(:sean).id
     patch :update, params: { id: @question, question: { text: @question.text } }
     assert_redirected_to question_path(assigns(:question))
+  end
+
+  test "should not update question with wrong user" do
+    session[:user_id] = users(:john).id
+    patch :update, params: { id: @question, question: { text: @question.text } }
+    assert_redirected_to root_path
   end
 
   test "should destroy question" do
@@ -65,5 +77,14 @@ class QuestionsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to questions_path
+  end
+
+  test "should not destroy question with wrong user" do
+    session[:user_id] = users(:john).id
+    assert_no_difference('Question.count') do
+      delete :destroy, params: { id: @question }
+    end
+
+    assert_redirected_to root_path
   end
 end

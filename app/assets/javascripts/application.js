@@ -17,14 +17,20 @@
 //= require select2
 //= require_tree .
 
-$(document).ready(function() {
-  // enable highlightjs
+var enableHighlightJS = function() {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
+};
+
+document.addEventListener("turbolinks:load", function() {
+  // enable highlightjs
+  enableHighlightJS();
 
   // close flash alerts
   $('.flash-alert button').click(function (e) {
     $(e.currentTarget).parent().remove();
   });
+
+  $('[data-toggle="tooltip"]').tooltip();
 });

@@ -12,10 +12,6 @@
   }
 }
 
-#new_question #question_text, .edit_question #question_text {
-  height: 400px;
-}
-
 .user-meta-text {
   font-size: 11px;
   #answered {
@@ -28,13 +24,28 @@
 }
 
 .label-question-tag {
-  background-color: #fff;
+  background-color: transparent;
   color: $brand-secondary;
   border-color: $brand-secondary;
   border: 1px solid;
 
   &[href]:hover, &[href]:active, &[href]:focus {
     background-color: $brand-secondary;
-    color: #fff;
+    border-color: $brand-secondary;
+    color: white;
+  }
+}
+
+.question-container {
+  width: 700px;
+  margin: auto;
+
+  &__item,
+  &__answer {
+    padding: 20px;
+    border: 1px solid $brand-primary;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: white;
   }
 }

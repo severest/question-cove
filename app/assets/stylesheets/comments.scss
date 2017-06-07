@@ -1,12 +1,51 @@
-.comment-list {
-  &__header {
-    font-weight: bold;
-    font-size: 12px;
-    margin-bottom: 5px;
+@mixin left-arrow-box($background, $border, $arrowSize, $borderWidth) {
+  position: relative;
+	background: $background;
+	border: $borderWidth solid $border;
+
+  &:after,
+  &:before {
+    right: 100%;
+  	top: 50%;
+  	border: solid transparent;
+  	content: " ";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
   }
 
+  &:after {
+    border-color: rgba(0, 0, 0, 0);
+  	border-right-color: $background;
+  	border-width: $arrowSize;
+  	margin-top: -$arrowSize;
+  }
+
+  &:before {
+    border-color: rgba(0, 0, 0, 0);
+  	border-right-color: $border;
+  	border-width: $arrowSize + $borderWidth + 2;
+  	margin-top: -($arrowSize + $borderWidth + 2);
+  }
+}
+
+.comment-list {
   &__item {
     margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item__avatar {
+    width: 33px;
+  }
+
+  &__item__content {
+    @include left-arrow-box(lighten($brand-primary, 30), $brand-primary, 5px, 2px);
+    padding: 12px;
+    border-radius: 5px;
+    width: 385px;
   }
 
   &__meta {
