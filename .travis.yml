@@ -7,6 +7,8 @@ script:
   - bundle exec rake
 before_script:
   - mysql -u root -e 'create database questioncove_test;'
+after_success:
+  - bundle exec codeclimate-test-reporter
 dist: trusty
 sudo: required
 addons:
@@ -15,3 +17,5 @@ addons:
     - mysql-server-5.6
     - mysql-client-core-5.6
     - mysql-client-5.6
+  code_climate:
+    repo_token: 587ff98ac48f05453f6d4b6f2f2e6ad0aba2faaadaf52b7dbb15876d2aeda1fa

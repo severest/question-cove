@@ -19,3 +19,5 @@
 config/deploy/production.rb
 
 .byebug_history
+
+coverage

@@ -45,3 +45,5 @@ gem 'select2-rails', '3.5.3'
 gem 'active_record_union'
 gem 'friendly_id'
 gem 'omniauth-google-oauth2'
+
+gem "codeclimate-test-reporter", group: :test, require: nil
