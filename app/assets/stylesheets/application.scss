@@ -1,18 +1,28 @@
-$brand-primary: #5F83EA;
-$brand-secondary: #03CAA3;
+$sea-foam-green: #B9E3C6;
+$gunmetal-blue: #32435E;
+$steel-blue: #AFB6DD;
+$aqua: #59C9A5;
+$grey-asparagus: #475841;
+$prune-red: #6E0D25;
+
+$brand-primary: $gunmetal-blue;
+$brand-secondary: $aqua;
+$brand-success: darken($sea-foam-green, 40%);
+$brand-danger: $prune-red;
+$body-bg: $sea-foam-green;
+$text-color: $grey-asparagus;
 
 // Custom bootstrap variables must be set or import before bootstrap itself.
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "select2";
+@import "mixins";
 @import "sel2";
 @import "showdown";
 @import "highlightjs";
 
-@import "answers";
 @import "questions";
 @import "users";
-@import "comments";
 @import "flash";
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
@@ -30,12 +40,11 @@ body {
   display: flex;
 }
 
-$nav-width: 250px;
+$nav-width: 70px;
 .navigation {
   height: 100%;
   min-width: $nav-width;
-  background: $brand-primary;
-  z-index: 10;
+  background: $grey-asparagus;
 
   a {
     color: white;
@@ -47,31 +56,33 @@ $nav-width: 250px;
   }
 
   &__brand {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    width: 20px;
-    line-height: 30px;
-    margin: 25px;
+    margin: 15px;
   }
 
   &__user {
     position: fixed;
     bottom: 0;
-    padding: 20px;
-    background-color: darken($brand-primary, 10);
-    width: $nav-width;
 
-    &__link {
-      font-size: 13px;
+    .btn {
+      background: transparent;
+      width: $nav-width;
+      padding: 20px 0;
+
+      &:hover {
+        background: darken($grey-asparagus, 10);
+      }
+
+      &:active,
+      &:focus {
+        outline: none;
+      }
     }
 
-    &__logout {
-      text-align: center;
-      font-size: 13px;
-    }
-
-    &__notloggedin {
-      color: white;
+    .dropdown-menu {
+      top: inherit;
+      bottom: 100%;
     }
   }
 }
@@ -80,8 +91,6 @@ $nav-width: 250px;
   flex-grow: 1;
   padding-top: 30px;
   overflow: auto;
-  box-shadow: -2px 0px 10px $gray-light;
-  z-index: 20;
 }
 
 textarea {

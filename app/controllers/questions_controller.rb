@@ -7,7 +7,13 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @order = params[:order] || 'created_at'
+    @order = 'created_at'
+    if params[:order] == 'views'
+      @order = 'views'
+    elsif params[:order] == 'total_votes'
+      @order = 'total_votes'
+    end
+
     if params[:s].nil?
       @questions = Question.order(@order + ' DESC').page(params[:page])
     else
@@ -116,7 +122,7 @@ class QuestionsController < ApplicationController
   def voteup
     vote = get_user_vote
     if vote.nil?
-      add_vote 1
+      add_vote(1)
       @question.update(total_votes: @question.calculate_votes)
     elsif vote.vote != 1
       vote.update(vote: 1)
@@ -132,7 +138,7 @@ class QuestionsController < ApplicationController
   def votedown
     vote = get_user_vote
     if vote.nil?
-      add_vote -1
+      add_vote(-1)
       @question.update(total_votes: @question.calculate_votes)
     elsif vote.vote != -1
       vote.update(vote: -1)

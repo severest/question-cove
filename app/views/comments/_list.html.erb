@@ -11,13 +11,19 @@
   </div>
 <% end %>
 
-<%= form_tag(comments_path, method: "post") do %>
-  <input type="hidden" name="comment[post_id]" value="<%= obj.id %>" />
-  <input type="hidden" name="comment[post_type]" value="<%= obj.class.name %>" />
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Comment..." name="comment[text]">
-    <span class="input-group-btn">
-      <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
-    </span>
+<div class="comment-list__item">
+  <div class="comment-list__item__avatar">
   </div>
-<% end %>
+  <div class="comment-list__item__textarea">
+    <%= form_tag(comments_path, method: "post") do %>
+      <input type="hidden" name="comment[post_id]" value="<%= obj.id %>" />
+      <input type="hidden" name="comment[post_type]" value="<%= obj.class.name %>" />
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Comment..." name="comment[text]">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

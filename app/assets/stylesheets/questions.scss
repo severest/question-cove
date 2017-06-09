@@ -42,10 +42,83 @@
 
   &__item,
   &__answer {
-    padding: 20px;
-    border: 1px solid $brand-primary;
-    border-radius: 5px;
     margin-bottom: 15px;
     background: white;
+    box-shadow: 0 0 5px black;
+
+    &__row {
+      display: flex;
+    }
+
+    &__content {
+      padding: 20px;
+      width: calc(100% - 70px);
+    }
+
+    &__side {
+      width: 65px;
+      background: $brand-primary;
+      color: white;
+
+      div {
+        margin-bottom: 10px;
+      }
+
+      div:first-child {
+        margin-top: 20px;
+      }
+
+      a {
+        color: white;
+      }
+    }
+
+    &__comments {
+      width: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__meta {
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: darken($gray-lighter, 10%);
+    }
+  }
+
+  &__answer--best-answer {
+    font-size: 19px;
+    padding: 20px;
+    background: $brand-success;
+    color: white;
+  }
+}
+
+.comment-list {
+  &__item {
+    display: flex;
+    align-items: stretch;
+    flex-grow: 2;
+  }
+
+  &__item__avatar {
+    width: 65px;
+    background: $brand-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item__content,
+  &__item__textarea {
+    padding: 12px;
+    width: 380px;
+    background: $gray-lighter;
+  }
+
+  &__item__content {
+    @include left-arrow-box($gray-lighter, $gray-lighter, 5px, 0);
   }
 }

@@ -18,25 +18,28 @@
 <div class="page">
   <div class="navigation">
     <div class="navigation__brand">
-      <%= link_to 'Question Cove', root_path %>
+      <%= link_to 'QC', root_path %>
     </div>
 
-    <div class="navigation__user">
-      <% if current_user %>
-        <div class="navigation__user__link">
-          <a href="<%= url_for user_path(current_user) %>">
-            <%= gravatar_tag current_user.email, :size => 35 %> <%= current_user.email %>
-          </a>
+    <% if current_user %>
+      <div class="navigation__user">
+        <div class="dropdown">
+          <button class="btn" id="user-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= gravatar_tag current_user.email, :size => 35 %>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="user-dropdown">
+            <li>
+              <a href="<%= url_for user_path(current_user) %>">
+                Profile
+              </a>
+            </li>
+            <li>
+              <%= link_to 'Log Out', logout_path, method: :delete %>
+            </li>
+          </ul>
         </div>
-        <div class="navigation__user__logout">
-          <%= link_to 'Log Out', logout_path, method: :delete %>
-        </div>
-      <% else %>
-        <div class="navigation__user__notloggedin">
-          Not logged in
-        </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="content">

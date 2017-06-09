@@ -3,8 +3,8 @@
     <div class="question-container">
 
       <div class="question-container__item">
-        <div class="row">
-          <div class="col-sm-1 text-center vote-count">
+        <div class="question-container__item__row">
+          <div class="question-container__item__side text-center">
             <div>
               <%= voteup questionup_path(@question) %>
             </div>
@@ -29,8 +29,8 @@
             <% end %>
           </div>
 
-          <div class="col-sm-11">
-            <div id="question-text">
+          <div class="question-container__item__content">
+            <div>
               <%= sanitize @question.render_question %>
             </div>
 
@@ -40,20 +40,39 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-7 col-md-offset-1">
+        <div class="question-container__item__row">
+          <div class="question-container__item__comments">
             <%= render partial: 'comments/list', locals: {obj: @question} %>
           </div>
-          <%= render partial: 'shared/question_user_meta', locals: {obj: @question, offset: nil} %>
+          <div class="question-container__item__meta">
+            <div>
+              <%= gravatar_tag @question.user.email, :size => 60 %>
+            </div>
+            <div>
+              Created by <%= link_to @question.user.email, user_path(@question.user) %>
+            </div>
+            <div>
+              <%= time_ago_in_words(@question.created_at) %> ago
+            </div>
+            <div>
+              <%= "Views: #{@question.views.to_s}" %>
+            </div>
+          </div>
         </div>
       </div>
 
 
       <% @question.sorted_answers.each do |answer| %>
         <div class="question-container__answer">
-          
-          <div class="row">
-            <div class="col-sm-1 text-center vote-count">
+
+          <% if !@question.best_answer.nil? && @question.best_answer.id == answer.id %>
+            <div class="question-container__answer--best-answer">
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Best!
+            </div>
+          <% end %>
+
+          <div class="question-container__item__row">
+            <div class="question-container__item__side text-center">
               <div>
                 <%= voteup answerup_path(answer) %>
               </div>
@@ -86,21 +105,27 @@
                 </div>
               <% end %>
             </div>
-            <div class="col-sm-10">
-              <% if !@question.best_answer.nil? && @question.best_answer.id == answer.id %>
-                <div class="best-answer text-success">
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Best!
-                </div>
-              <% end %>
-              <p><%= sanitize answer.render_answer %></p>
+
+            <div class="question-container__answer__content">
+              <%= sanitize answer.render_answer %>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-7 col-md-offset-1">
+          <div class="question-container__item__row">
+            <div class="question-container__item__comments">
               <%= render partial: 'comments/list', locals: {obj: answer} %>
             </div>
-            <%= render partial: 'shared/answer_user_meta', locals: {obj: answer, offset: nil} %>
+            <div class="question-container__item__meta">
+              <div>
+                <%= gravatar_tag answer.user.email, :size => 60 %>
+              </div>
+              <div>
+                Created by <%= link_to answer.user.email, user_path(answer.user) %>
+              </div>
+              <div>
+                <%= time_ago_in_words(answer.created_at) %> ago
+              </div>
+            </div>
           </div>
 
         </div>

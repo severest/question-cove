@@ -3,8 +3,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @order = params[:order] || 'created_at'
     @type = params[:type] || 'questions'
+    @order = 'created_at'
+    if params[:order] == 'views'
+      @order = 'views'
+    elsif params[:order] == 'total_votes'
+      @order = 'total_votes'
+    end
 
     if @type == 'questions'
       @questions = @user.questions.order(@order + ' DESC').page(params[:page])

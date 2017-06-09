@@ -8,8 +8,10 @@ class CommentsController < ApplicationController
     if @comment.save
       if @comment.post.class.name == "Question"
         redirect_to @comment.post, notice: 'Comment was successfully created.'
-      else
+      elsif @comment.post.class.name == "Answer"
         redirect_to @comment.post.question, notice: 'Comment was successfully created.'
+      else
+        redirect_to root_path
       end
     else
       render :new

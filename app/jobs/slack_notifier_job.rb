@@ -20,6 +20,6 @@ class SlackNotifierJob < ApplicationJob
     request = Net::HTTP::Post.new(uri.request_uri)
     request.body = parms.to_json
 
-    response = http.request(request)
+    http.request(request)
   end
 end

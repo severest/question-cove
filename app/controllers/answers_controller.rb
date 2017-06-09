@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
   def voteup
     vote = get_user_vote
     if vote.nil?
-      add_vote 1
+      add_vote(1)
     elsif vote.vote != 1
       vote.update(vote: 1)
     end
@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
   def votedown
     vote = get_user_vote
     if vote.nil?
-      add_vote -1
+      add_vote(-1)
     elsif vote.vote != -1
       vote.update(vote: -1)
     end

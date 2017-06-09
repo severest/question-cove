@@ -29,10 +29,12 @@ group :development do
   gem 'capistrano3-puma', '~> 1.2.1'
   gem 'web-console', '>= 3.3.0'
   gem 'letter_opener_web'
+  gem 'brakeman', :require => false
 end
 
 group :test do
   gem 'rails-controller-testing'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -45,5 +47,3 @@ gem 'select2-rails', '3.5.3'
 gem 'active_record_union'
 gem 'friendly_id'
 gem 'omniauth-google-oauth2'
-
-gem "codeclimate-test-reporter", group: :test, require: nil
