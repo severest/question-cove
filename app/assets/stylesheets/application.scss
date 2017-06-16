@@ -4,9 +4,10 @@ $steel-blue: #AFB6DD;
 $aqua: #59C9A5;
 $grey-asparagus: #475841;
 $prune-red: #6E0D25;
+$purple: #6b2ad4;
 
 $brand-primary: $gunmetal-blue;
-$brand-secondary: $aqua;
+$brand-secondary: $purple;
 $brand-success: darken($sea-foam-green, 40%);
 $brand-danger: $prune-red;
 $body-bg: $sea-foam-green;
@@ -15,6 +16,7 @@ $text-color: $grey-asparagus;
 // Custom bootstrap variables must be set or import before bootstrap itself.
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import "select2";
 @import "mixins";
 @import "sel2";
@@ -45,6 +47,7 @@ $nav-width: 70px;
   height: 100%;
   min-width: $nav-width;
   background: $grey-asparagus;
+  z-index: 10;
 
   a {
     color: white;
@@ -147,13 +150,6 @@ textarea {
   font-size: 12px;
 }
 
-footer {
-  color: $gray-light;
-  min-height: 150px;
-  padding-top: 50px;
-  font-size: 11px;
-}
-
 .highlight {
   background-color: #F9F9F9;
   border: 1px solid #A5A5A5;
@@ -162,5 +158,16 @@ footer {
   border-radius: 5px;
   h2 {
     font-size: 20px;
+  }
+}
+
+.btn-google-login {
+  padding: 10px;
+  background: white;
+  border-radius: 1px;
+  box-shadow: 0px 0px 2px black;
+
+  i {
+    margin-right: 10px;
   }
 }
