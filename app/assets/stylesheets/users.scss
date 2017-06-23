@@ -1,5 +1,21 @@
+.user-page {
+  display: flex;
+
+  &__left {
+    width: 360px;
+    padding-right: 20px;
+  }
+
+  &__right {
+    width: calc(100% - 360px);
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .user-profile img {
     margin: 20px;
-    box-shadow: 0 0 8px darken($gray-lighter, 10%);
-    border-radius: 50%;
 }

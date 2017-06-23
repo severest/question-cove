@@ -20,7 +20,8 @@ class QuestionsController < ApplicationController
       @search_query = params[:s]
       @questions = Question.where("match(text) against (?)", @search_query).union(Question.tagged_with(@search_query)).order(@order + ' DESC').page(params[:page])
     end
-    @most_used_tags = ActsAsTaggableOn::Tag.most_used(10)
+    
+    # @most_used_tags = ActsAsTaggableOn::Tag.most_used(10)
   end
 
   # GET /questions/1

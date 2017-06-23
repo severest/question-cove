@@ -1,16 +1,35 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="row">
-      <div class="col-md-3 text-center">
-        <%= question.answers.count %> answers<br/>
-        <%= question.total_votes %> votes<br/>
+<div class="question-summary-item card">
+  <div class="question-summary-item__content">
+    <div class="question-summary-item__title">
+      <a href="<%= url_for question %>"><%= sanitize question.first_line %></a>
+    </div>
+    <%= render partial: 'shared/tag_list', locals: {tags: question.tag_list} %>
+  </div>
+  <div class="question-summary-item__bottom">
+    <div class="question-summary-item__bottom__left">
+      <div class="question-summary-item__bottom__item">
+        <span data-toggle="tooltip" data-placement="top" title="Comments">
+          <%= fa_icon 'comments' %> <%= question.answers.count %>
+        </span>
       </div>
-      <div class="col-md-9">
-        <div class="question-text"><a href="<%= url_for question %>"><%= sanitize question.first_line %></a></div>
-        <%= render partial: 'shared/tag_list', locals: {tags: question.tag_list} %>
+      <div class="question-summary-item__bottom__item">
+        <span data-toggle="tooltip" data-placement="top" title="Votes">
+          <%= fa_icon 'check-square-o' %> <%= question.total_votes %>
+        </span>
+      </div>
+      <div class="question-summary-item__bottom__item">
+        <span data-toggle="tooltip" data-placement="top" title="Views">
+          <%= fa_icon 'eye' %> <%= question.views %>
+        </span>
+      </div>
+    </div>
+    <div class="question-summary-item__bottom__right">
+      <div class="question-summary-item__bottom__item">
+        <%= gravatar_tag question.user.email, :size => 20 %> <%= link_to question.user.email, user_path(question.user) %>
+      </div>
+      <div class="question-summary-item__bottom__item">
+        <%= fa_icon 'calendar' %> <%= time_ago_in_words(question.created_at) %> ago
       </div>
     </div>
   </div>
-  <%= render partial: 'shared/question_user_meta', locals: {obj: question, offset: nil} %>
 </div>
-<hr/>

@@ -4,10 +4,10 @@ $steel-blue: #AFB6DD;
 $aqua: #59C9A5;
 $grey-asparagus: #475841;
 $prune-red: #6E0D25;
-$purple: #6b2ad4;
+$orange: #f78714;
 
 $brand-primary: $gunmetal-blue;
-$brand-secondary: $purple;
+$brand-secondary: $orange;
 $brand-success: darken($sea-foam-green, 40%);
 $brand-danger: $prune-red;
 $body-bg: $sea-foam-green;
@@ -161,13 +161,40 @@ textarea {
   }
 }
 
-.btn-google-login {
-  padding: 10px;
+.card {
   background: white;
-  border-radius: 1px;
-  box-shadow: 0px 0px 2px black;
+  box-shadow: 0 0 5px black;
+}
+.card-header {
+  font-size: 19px;
+  padding: 20px;
+  background: $gray-lighter;
+  border-bottom: 1px solid $gray-light;
 
-  i {
-    margin-right: 10px;
+  &--success {
+    background: $brand-success;
+    color: white;
+  }
+}
+
+.welcome-card {
+  width: 400px;
+  margin: auto;
+
+  .btn-google-login {
+    margin: 50px;
+    padding: 10px;
+    background: $brand-primary;
+    color: white;
+    border-radius: 1px;
+    box-shadow: 0px 0px 2px black;
+
+    i {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background: darken($brand-primary, 20%);
+    }
   }
 }

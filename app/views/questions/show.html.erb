@@ -2,7 +2,7 @@
   <div class="row">
     <div class="question-container">
 
-      <div class="question-container__item">
+      <div class="card question-container__item">
         <div class="question-container__item__row">
           <div class="question-container__item__side text-center">
             <div>
@@ -46,16 +46,13 @@
           </div>
           <div class="question-container__item__meta">
             <div>
-              <%= gravatar_tag @question.user.email, :size => 60 %>
+              <%= gravatar_tag @question.user.email, :size => 25 %> <%= link_to @question.user.email, user_path(@question.user) %>
             </div>
             <div>
-              Created by <%= link_to @question.user.email, user_path(@question.user) %>
+              <%= fa_icon 'calendar' %> <%= time_ago_in_words(@question.created_at) %> ago
             </div>
             <div>
-              <%= time_ago_in_words(@question.created_at) %> ago
-            </div>
-            <div>
-              <%= "Views: #{@question.views.to_s}" %>
+              <%= fa_icon 'eye' %> <%= @question.views %>
             </div>
           </div>
         </div>
@@ -63,10 +60,10 @@
 
 
       <% @question.sorted_answers.each do |answer| %>
-        <div class="question-container__answer">
+        <div class="card question-container__answer">
 
           <% if !@question.best_answer.nil? && @question.best_answer.id == answer.id %>
-            <div class="question-container__answer--best-answer">
+            <div class="card-header card-header--success">
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Best!
             </div>
           <% end %>
@@ -117,13 +114,10 @@
             </div>
             <div class="question-container__item__meta">
               <div>
-                <%= gravatar_tag answer.user.email, :size => 60 %>
+                <%= gravatar_tag answer.user.email, :size => 25 %> <%= link_to answer.user.email, user_path(answer.user) %>
               </div>
               <div>
-                Created by <%= link_to answer.user.email, user_path(answer.user) %>
-              </div>
-              <div>
-                <%= time_ago_in_words(answer.created_at) %> ago
+                <%= fa_icon 'calendar' %> <%= time_ago_in_words(answer.created_at) %> ago
               </div>
             </div>
           </div>

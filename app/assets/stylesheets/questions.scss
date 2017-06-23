@@ -1,13 +1,57 @@
 .question-list-container {
-  border-right: 1px solid $gray-lighter;
+  width: 970px;
+  margin: auto;
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+
+    .input-group {
+      width: 320px;
+    }
+
+    .btn-primary {
+      height: 35px;
+    }
+  }
 }
 
-.question-list, .user-question-list {
+.question-list {
   margin-top: 20px;
-  .question-text {
-    h1, h2, h3, h4, h5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-summary-item {
+  margin-bottom: 10px;
+  width: 750px;
+
+  &__content {
+    padding: 20px;
+  }
+  &__title {
+    h1, h2, h3, h4 {
+      margin-top: 0;
       font-size: 18px;
-      margin-top: 0px;
+    }
+  }
+  &__bottom {
+    background: $brand-primary;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__bottom__left,
+  &__bottom__right {
+    display: flex;
+  }
+  &__bottom__item {
+    padding: 13px;
+    font-size: 15px;
+
+    a {
+      color: white;
     }
   }
 }
@@ -43,8 +87,6 @@
   &__item,
   &__answer {
     margin-bottom: 15px;
-    background: white;
-    box-shadow: 0 0 5px black;
 
     &__row {
       display: flex;
@@ -83,16 +125,18 @@
       width: 260px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       background: darken($gray-lighter, 10%);
-    }
-  }
 
-  &__answer--best-answer {
-    font-size: 19px;
-    padding: 20px;
-    background: $brand-success;
-    color: white;
+      div {
+        padding: 10px 21px 0;
+      }
+      div:last-child {
+        padding-bottom: 15px;
+      }
+      div:first-child {
+        padding: 15px 15px 0;
+      }
+    }
   }
 }
 
@@ -121,4 +165,8 @@
   &__item__content {
     @include left-arrow-box($gray-lighter, $gray-lighter, 5px, 0);
   }
+}
+
+.edit_answer {
+  width: 750px;
 }

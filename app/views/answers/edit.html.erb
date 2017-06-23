@@ -1,26 +1,42 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+<div class="question-list">
 
-      <div class="row">
-        <div class="col-sm-12">
-          <div id="question-text">
-            <%= sanitize @answer.question.render_question %>
-          </div>
+  <div class="question-summary-item card">
+    <div class="question-summary-item__content">
+      <%= sanitize @answer.question.render_question %>
+      <div>
+        <%= render partial: 'shared/tag_list', locals: {tags: @answer.question.tag_list} %>
+      </div>
+    </div>
+
+    <div class="question-summary-item__bottom">
+      <div class="question-summary-item__bottom__left">
+        <div class="question-summary-item__bottom__item">
+          <span data-toggle="tooltip" data-placement="top" title="Comments">
+            <%= fa_icon 'comments' %> <%= @answer.question.answers.count %>
+          </span>
+        </div>
+        <div class="question-summary-item__bottom__item">
+          <span data-toggle="tooltip" data-placement="top" title="Votes">
+            <%= fa_icon 'check-square-o' %> <%= @answer.question.total_votes %>
+          </span>
+        </div>
+        <div class="question-summary-item__bottom__item">
+          <span data-toggle="tooltip" data-placement="top" title="Views">
+            <%= fa_icon 'eye' %> <%= @answer.question.views %>
+          </span>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-7 col-md-offset-1">
-          <%= render partial: 'shared/tag_list', locals: {tags: @answer.question.tag_list} %>
+      <div class="question-summary-item__bottom__right">
+        <div class="question-summary-item__bottom__item">
+          <%= gravatar_tag @answer.question.user.email, :size => 20 %> <%= link_to @answer.question.user.email, user_path(@answer.question.user) %>
         </div>
-        <%= render partial: 'shared/question_user_meta', locals: {obj: @answer.question, offset: nil} %>
+        <div class="question-summary-item__bottom__item">
+          <%= fa_icon 'calendar' %> <%= time_ago_in_words(@answer.question.created_at) %> ago
+        </div>
       </div>
-
-      <hr/>
-
-      <%= render 'answers/form' %>
-
     </div>
   </div>
+
+  <%= render 'answers/form' %>
+
 </div>
