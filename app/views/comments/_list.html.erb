@@ -2,7 +2,7 @@
   <div class="comment-list__item">
     <div class="comment-list__item__avatar">
       <span data-toggle="tooltip" data-placement="left" data-html="true" title="<%= comment.user.name %><br/><%= time_ago_in_words(comment.created_at) %> ago">
-        <%= gravatar_tag obj.user.email, :size => 25 %>
+        <%= gravatar_tag comment.user.email, :size => 25 %>
       </span>
     </div>
     <div class="comment-list__item__content">
