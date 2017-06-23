@@ -35,7 +35,8 @@ class Question < ApplicationRecord
   end
 
   def first_line_for_slug
-    return self.text.lines.first.slice(0,100).gsub! '#', ''
+    str = self.text.lines.first.slice(0,100).delete! '#'
+    return str
   end
 
   def self.starting_text

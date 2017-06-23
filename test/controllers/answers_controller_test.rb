@@ -5,6 +5,32 @@ class AnswersControllerTest < ActionController::TestCase
     @answer = answers(:one)
   end
 
+  test "should not create answer without login" do
+    question = questions(:one)
+    assert_no_difference('Answer.count') do
+      post :create, params: { answer: { text: 'an answer', question_id: question.id } }
+    end
+
+    assert_redirected_to login_url
+  end
+
+  test "should create answer" do
+    session[:user_id] = users(:sean).id
+    question = questions(:one)
+    assert_difference('Answer.count') do
+      post :create, params: { answer: { text: 'an answer', question_id: question.id } }
+    end
+
+    assert_redirected_to question_path(question)
+  end
+
+  test "should not create answer without question" do
+    session[:user_id] = users(:sean).id
+    assert_no_difference('Answer.count') do
+      post :create, params: { answer: { text: 'an answer' } }
+    end
+  end
+
   test "should update answer" do
     session[:user_id] = users(:sean).id
     patch :update, params: { id: answers(:one), answer: { text: 'updated text!' } }
@@ -62,5 +88,27 @@ class AnswersControllerTest < ActionController::TestCase
     @answer.reload
     assert_not_equal @answer.text, 'changed my answer'
     assert_redirected_to @answer.question
+  end
+
+  test "should vote up" do
+    session[:user_id] = users(:sean).id
+    assert_equal @answer.total_votes, 1
+    post :voteup, params: { id: @answer.id }
+    @answer.reload
+    assert_equal @answer.total_votes, 2
+    post :voteup, params: { id: @answer.id }
+    @answer.reload
+    assert_equal @answer.total_votes, 2
+  end
+
+  test "should vote down" do
+    session[:user_id] = users(:sean).id
+    assert_equal @answer.total_votes, 1
+    post :votedown, params: { id: @answer.id }
+    @answer.reload
+    assert_equal @answer.total_votes, 0
+    post :votedown, params: { id: @answer.id }
+    @answer.reload
+    assert_equal @answer.total_votes, 0
   end
 end

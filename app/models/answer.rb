@@ -6,6 +6,7 @@ class Answer < ApplicationRecord
   has_one :best_answer_question, class_name: "Question", foreign_key: "best_answer_id", dependent: :nullify
 
   validates :text, presence: true
+  validates :question, presence: true
 
   @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
 
