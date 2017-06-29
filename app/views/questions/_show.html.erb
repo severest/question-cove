@@ -1,5 +1,12 @@
 <div class="question-summary-item card">
   <div class="question-summary-item__content">
+    <% if !question.best_answer.nil? %>
+      <div class="ribbon-wrapper-green">
+        <div class="ribbon-green">
+          Answered
+        </div>
+      </div>
+    <% end %>
     <div class="question-summary-item__title">
       <a href="<%= url_for question %>"><%= sanitize question.first_line %></a>
     </div>
