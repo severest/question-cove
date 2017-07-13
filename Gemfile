@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.1'
+gem 'rails'
 gem 'mysql2'
 gem 'puma'
 # Use SCSS for stylesheets
@@ -24,10 +24,10 @@ gem 'jbuilder'
 # Use Capistrano for deployment
 group :development do
   gem 'byebug', platform: :mri
-  gem 'capistrano', '3.6.1'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano3-puma', '~> 1.2.1'
-  gem 'web-console', '>= 3.3.0'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'web-console'
   gem 'letter_opener_web'
   gem 'brakeman', :require => false
 end
