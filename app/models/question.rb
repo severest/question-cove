@@ -19,8 +19,6 @@ class Question < ApplicationRecord
 
   validates :text, presence: true
 
-  @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
-
   def render_question
     @@markdown.render(self.text)
   end

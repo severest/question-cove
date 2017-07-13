@@ -165,6 +165,10 @@
 
   &__item__content {
     @include left-arrow-box($gray-lighter, $gray-lighter, 5px, 0);
+
+    p {
+      margin: 0;
+    }
   }
 }
 

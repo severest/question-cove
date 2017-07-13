@@ -8,8 +8,6 @@ class Answer < ApplicationRecord
   validates :text, presence: true
   validates :question, presence: true
 
-  @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
-
   def total_votes
     count = 0
     self.votes.each do |v|
