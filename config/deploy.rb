@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.8.2'
 
 set :application, 'question-cove'
 set :repo_url, 'https://github.com/severest/question-cove.git'
@@ -9,9 +9,6 @@ set :repo_url, 'https://github.com/severest/question-cove.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '~/question-cove'
-
-# Default value for :scm is :git
-# set :scm, :git
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
