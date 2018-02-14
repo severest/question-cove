@@ -96,6 +96,7 @@
     &__content {
       padding: 20px;
       width: calc(100% - 70px);
+      word-wrap: break-word;
     }
 
     &__side {
