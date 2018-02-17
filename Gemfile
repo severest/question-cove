@@ -35,6 +35,8 @@ end
 group :test do
   gem 'rails-controller-testing'
   gem "codeclimate-test-reporter", require: nil
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 gem 'bootstrap-sass', '~> 3.3.6'

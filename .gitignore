@@ -23,3 +23,5 @@ config/deploy/production.rb
 coverage
 
 brakeman.html
+
+capybara-*.png

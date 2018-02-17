@@ -1,11 +1,11 @@
 sean:
   email: test@test.net
   name: Sean Test
-  provider: test
+  provider: google
   uid: 1
 
 john:
   email: johnny@test.net
   name: Johnny Test
-  provider: test
+  provider: google
   uid: 2
