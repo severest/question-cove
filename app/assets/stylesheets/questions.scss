@@ -28,7 +28,7 @@
   width: 750px;
 
   &__content {
-    padding: 20px 40px 20px 20px;
+    padding: 20px 50px 20px 20px;
     position: relative;
   }
   &__title {
@@ -96,6 +96,7 @@
     &__content {
       padding: 20px;
       width: calc(100% - 70px);
+      word-wrap: break-word;
     }
 
     &__side {
