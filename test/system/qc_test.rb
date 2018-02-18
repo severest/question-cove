@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class RetrosTest < ApplicationSystemTestCase
+class QuestionCoveTest < ApplicationSystemTestCase
   def teardown
     errors = page.driver.browser.manage.logs.get(:browser)
     if errors.present?
