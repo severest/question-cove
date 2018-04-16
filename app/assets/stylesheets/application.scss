@@ -42,6 +42,19 @@ body {
   display: flex;
 }
 
+.pagination {
+  display: inline-flex;
+
+  .page.gap {
+    background: white;
+    color: $brand-primary;
+    padding: 6px 12px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+  }
+}
+
 $nav-width: 70px;
 .navigation {
   height: 100%;
