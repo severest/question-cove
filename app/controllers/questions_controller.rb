@@ -186,7 +186,11 @@ class QuestionsController < ApplicationController
     end
 
     def set_tags
-      new_tags = question_params['tag_list'].split(',').reject { |c| c.empty? }
+      tag_list = ""
+      if !question_params['tag_list'].nil?
+        tag_list = question_params['tag_list']
+      end
+      new_tags = tag_list.split(',').reject { |c| c.empty? }
       old_tags = @question.tags.map(&:name)
       return if new_tags == old_tags
       (old_tags - new_tags).map {|e| @question.tag_list.remove(e)}
