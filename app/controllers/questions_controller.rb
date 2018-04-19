@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
       @search_query = params[:s]
       @questions = Question.where("match(text) against (?)", @search_query).union(Question.tagged_with(@search_query)).order(@order + ' DESC').page(params[:page])
     end
-    
+
     # @most_used_tags = ActsAsTaggableOn::Tag.most_used(10)
   end
 
@@ -45,7 +45,8 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
+    @question = Question.new(text: question_params['text'])
+    set_tags
     @question.user = current_user
 
     respond_to do |format|
@@ -100,7 +101,9 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
-      if @question.update(question_params)
+      @question.text = question_params['text']
+      set_tags
+      if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
       else
@@ -180,5 +183,13 @@ class QuestionsController < ApplicationController
       vote.user = current_user
       vote.vote = value
       @question.votes.push(vote)
+    end
+
+    def set_tags
+      new_tags = question_params['tag_list'].split(',').reject { |c| c.empty? }
+      old_tags = @question.tags.map(&:name)
+      return if new_tags == old_tags
+      (old_tags - new_tags).map {|e| @question.tag_list.remove(e)}
+      (new_tags - old_tags ).map {|e| @question.tag_list.add e}
     end
 end
