@@ -1,8 +1,6 @@
-# Question Cove ![Travis build status](https://travis-ci.org/severest/question-cove.svg?branch=master) ![Code Climate](https://codeclimate.com/github/severest/question-cove/badges/gpa.svg)
+# Question Cove [![Travis build status](https://travis-ci.org/severest/question-cove.svg?branch=master)](https://travis-ci.org/severest/question-cove) ![Code Climate](https://codeclimate.com/github/severest/question-cove/badges/gpa.svg)
 
 A application to facilitate questions and answers written in Ruby on Rails.
-
-View [the demo](https://questioncove.thealtitude.ca).
 
 REQUIRES MySQL 5.6 (Full text search)
 
