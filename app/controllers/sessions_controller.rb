@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :require_login, except: [:new, :create, :denied]
+  before_action :require_login, except: [:new, :create, :denied, :destroy]
 
   def new
   end
