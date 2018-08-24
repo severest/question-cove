@@ -166,6 +166,7 @@
 
   &__item__content {
     @include left-arrow-box($gray-lighter, $gray-lighter, 5px, 0);
+    word-wrap: break-word;
 
     p {
       margin: 0;
