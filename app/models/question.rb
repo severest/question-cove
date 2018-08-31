@@ -33,7 +33,7 @@ class Question < ApplicationRecord
   end
 
   def first_line_for_slug
-    str = self.text.lines.first.slice(0,100).delete! '#'
+    str = self.text.lines.first.slice(0,100).delete '#'
     return str
   end
 
