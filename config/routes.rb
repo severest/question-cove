@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/questions/:id/up', to: 'questions#voteup', as: 'questionup'
   post '/questions/:id/down', to: 'questions#votedown', as: 'questiondown'
   post '/questions/:id/best_answer', to: 'questions#best_answer', as: 'best_answer'
+  post '/questions/:id/pingslack', to: 'questions#remind_on_slack', as: 'remind_on_slack'
 
   resources :answers, only: [:create, :edit, :update, :destroy]
   post '/answers/:id/up', to: 'answers#voteup', as: 'answerup'

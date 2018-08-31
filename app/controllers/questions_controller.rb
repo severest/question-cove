@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :require_login
-  before_action :set_question, only: [:show, :edit, :update, :destroy, :best_answer, :voteup, :votedown]
-  before_action :can_edit_redirect, only: [:edit, :update, :destroy, :best_answer]
+  before_action :set_question, except: [:index, :new, :create, :get_tags_like]
+  before_action :can_edit_redirect, only: [:edit, :update, :destroy, :best_answer, :remind_on_slack]
   helper_method :can_edit_question
 
   # GET /questions
@@ -87,13 +87,34 @@ class QuestionsController < ApplicationController
       respond_to do |format|
         if @question.save
           format.html { redirect_to @question, notice: 'Best answer was set' }
-          format.json { render :show, status: :created, location: @question }
+          format.json { render :show, status: :ok, location: @question }
         else
           flash[:alert] = 'There was a problem saving your question.'
           format.html { redirect_to @question  }
           format.json { render json: @question.errors, status: :unprocessable_entity }
         end
       end
+    end
+  end
+
+  def remind_on_slack
+    if Rails.application.config.slack_notifications
+      t = @question.last_reminder.nil? ? @question.created_at : @question.last_reminder
+      if t < Time.now - 1.hour
+        SlackNotifierJob.perform_later("The question still requires a solution, please help if you can: *#{@question.first_line_for_slug.strip}* #{question_url(@question)}")
+        notice = 'A reminder has been sent'
+        @question.last_reminder = Time.now
+        @question.save
+      else
+        notice = 'You can only remind slack once an hour'
+      end
+    else
+      notice = 'Slack notifications are disabled'
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @question, notice: notice }
+      format.json { render :show, status: :ok, location: @question }
     end
   end
 
