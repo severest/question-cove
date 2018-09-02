@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :require_login
-  before_action :set_question, except: [:index, :new, :create, :get_tags_like]
+  before_action :set_question, except: [:index, :new, :create, :get_tags_like, :show]
   before_action :can_edit_redirect, only: [:edit, :update, :destroy, :best_answer, :remind_on_slack]
   helper_method :can_edit_question
 
@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @question = Question.friendly.includes({answers: {comments: [:user]}}, {comments: [:user]}).find(params[:id])
     @answer = Answer.new
     @answer.question = @question
     @question.update(views: @question.views+1)
