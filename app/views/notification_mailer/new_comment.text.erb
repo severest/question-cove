@@ -1,0 +1,6 @@
+There is a new comment on a question you are participating in:
+
+Question: <%= @question.first_line_for_slug.strip %>
+Comment: <%= @comment.text %>
+
+View the question here: <%= question_url(@question) %>

@@ -1,0 +1,35 @@
+<table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin: 15px 0;">
+  <tr>
+    <td colspan="2">
+      There is a new comment on a question you are participating in:
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 100px;">
+      Question:
+    </td>
+    <td>
+      <%= @question.first_line_for_slug.strip %>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 100px;">
+      Comment:
+    </td>
+    <td style="font-style: italic;">
+      <%= @comment.text %>
+    </td>
+  </tr>
+</table>
+
+<table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin: 10px 0;">
+  <tr>
+    <td style="margin: 10px 0;">
+      <a href="<%= question_url(@question) %>"
+        style="background: #32435E; color: #fff; font-size: 16px; padding: 8px 12px; border-radius: 4px; text-decoration: none;"
+      >
+        View the question
+      </a>
+    </td>
+  </tr>
+</table>

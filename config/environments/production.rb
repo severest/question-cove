@@ -1,4 +1,5 @@
 Rails.application.configure do
+  settings = YAML.load_file(Rails.root.join('config', 'settings.yml').to_s)
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -78,4 +79,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.slack_notifications = true
+
+  config.active_job.queue_adapter = :delayed_job
+
+  config.action_mailer.default_url_options = { :host => settings['emails']['host'] }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = settings['emails']['mailgun']
+  config.action_mailer.default_options = { from: settings['emails']['from'] }
 end

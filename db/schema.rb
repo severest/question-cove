@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_020657) do
+ActiveRecord::Schema.define(version: 2018_09_02_153946) do
 
   create_table "answers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "text"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 2018_08_30_020657) do
     t.datetime "updated_at"
     t.index ["post_type", "post_id"], name: "index_comments_on_post_type_and_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "friendly_id_slugs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -94,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_020657) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "slug"
+    t.boolean "disable_comment_emails", default: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["slug"], name: "index_users_on_slug", unique: true

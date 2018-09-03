@@ -95,9 +95,21 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    delayed_job (4.1.5)
+      activesupport (>= 3.0, < 5.3)
+    delayed_job_active_record (4.1.3)
+      activerecord (>= 3.0, < 5.3)
+      delayed_job (>= 3.0, < 5)
     docile (1.1.5)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.11.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.0)
+      factory_bot (~> 4.11.0)
+      railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -109,6 +121,8 @@ GEM
       activesupport (>= 4.2.0)
     gravatarify (3.1.1)
     hashie (3.5.7)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -145,9 +159,14 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    mailgun-ruby (1.1.10)
+      rest-client (~> 2.0)
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
@@ -159,6 +178,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (5.0.1)
+    netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -216,6 +236,10 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rubyzip (1.2.1)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
@@ -258,6 +282,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -284,6 +311,8 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter
   coffee-rails
+  delayed_job_active_record
+  factory_bot_rails
   font-awesome-rails
   friendly_id
   gravatarify
@@ -291,6 +320,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   letter_opener_web
+  mailgun-ruby
   mysql2
   omniauth-google-oauth2
   puma

@@ -1,3 +1,5 @@
+require "delayed/recipes"
+
 # config valid only for current version of Capistrano
 lock '3.11.0'
 
@@ -21,7 +23,7 @@ set :deploy_to, '~/question-cove'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/initializers/omniauth.rb', 'config/initializers/slack.rb'
+append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/initializers/omniauth.rb', 'config/initializers/slack.rb', 'config/settings.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
@@ -31,3 +33,7 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 
 # Default value for keep_releases is 5
 set :keep_releases, 3
+
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"

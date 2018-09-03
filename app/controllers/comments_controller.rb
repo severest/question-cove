@@ -7,6 +7,18 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      if @comment.post_type == 'Question'
+        question = @comment.post
+      else
+        question = @comment.post.question
+      end
+
+      users_to_email = question.all_users_involved.where(disable_comment_emails: false)
+                         .select { |user| user != @comment.user }
+      users_to_email.each do |user|
+        NotificationMailer.with(comment: @comment, question: question, user: user).new_comment.deliver_later
+      end
+
       redirect_to get_redirect_url(@comment), notice: 'Comment was successfully created.'
     else
       flash[:alert] = 'There was a problem creating your comment.'
@@ -16,7 +28,7 @@ class CommentsController < ApplicationController
 
   def update
     url = get_redirect_url(@comment)
-    if current_user == @comment.user and @comment.update(comment_params) 
+    if current_user == @comment.user and @comment.update(comment_params)
       redirect_to url, notice: 'Comment was successfully updated.'
     else
       flash[:alert] = 'Updating comment failed.'

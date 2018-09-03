@@ -39,6 +39,10 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'gravatarify'
@@ -50,3 +54,5 @@ gem 'active_record_union'
 gem 'friendly_id'
 gem 'omniauth-google-oauth2'
 gem 'font-awesome-rails'
+gem 'mailgun-ruby'
+gem 'delayed_job_active_record'

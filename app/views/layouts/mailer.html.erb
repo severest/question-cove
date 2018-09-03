@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body style="font-family: sans-serif; background: #B9E3C6;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center">
+          <table width="600px" border="0" cellspacing="0" cellpadding="0" style="background: #fff; border: 1px solid #afafaf; border-radius: 4px;">
+            <tr>
+              <td align="center">
+                <table width="600px" border="0" cellspacing="0" cellpadding="0" style="border-bottom: 1px solid #afafaf; padding: 10px;">
+                  <tr>
+                    <td align="center" style="font-weight: bold; font-size: 24px;">
+                        <div style="width: 600px; text-align: left;">QuestionCove</div>
+                    </td>
+                  </tr>
+                </table>
+
+                <%= yield %>
+
+                <table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin: 20px 0 10px;">
+                  <tr>
+                    <td>
+                      <a href="<%= edit_user_url(@user) %>" style="font-size: 11px; color: #333;">Adjust my email settings</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

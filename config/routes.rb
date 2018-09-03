@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/answers/:id/up', to: 'answers#voteup', as: 'answerup'
   post '/answers/:id/down', to: 'answers#votedown', as: 'answerdown'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
   resources :comments, only: [:create, :destroy, :update]
 

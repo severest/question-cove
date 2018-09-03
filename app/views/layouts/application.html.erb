@@ -34,6 +34,11 @@
               </a>
             </li>
             <li>
+              <a href="<%= url_for edit_user_path(current_user) %>">
+                Settings
+              </a>
+            </li>
+            <li>
               <%= link_to 'Log Out', logout_path, method: :delete %>
             </li>
           </ul>

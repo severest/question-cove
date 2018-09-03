@@ -12,4 +12,14 @@ class QuestionTest < ActiveSupport::TestCase
     q = questions(:two)
     assert_equal q.sorted_answers[0].id, answers(:three).id
   end
+
+  test "should return all participating users" do
+    users = create_list(:user, 4)
+    q = create(:question, user: users[0])
+    create(:comment, user: users[3], post: q)
+    a = create(:answer, user: users[1], question: q)
+    create(:comment, user: users[2], post: a)
+    create(:comment, user: users[2], post: a)
+    assert_equal users.pluck('id'), q.all_users_involved.pluck(:id)
+  end
 end

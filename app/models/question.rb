@@ -61,4 +61,13 @@ above to see what it will look like.}
   def calculate_votes
     self.votes.sum(:vote)
   end
+
+  def all_users_involved
+    answers = self.answers.includes(:user, {comments: [:user]})
+    user_ids = answers.pluck('users.id')
+    user_ids.push(answers.pluck('users_comments.id'))
+    user_ids.push(self.comments.includes(:user).pluck('users.id'))
+    user_ids.push(self.user.id)
+    return User.where(id: user_ids.flatten.to_set)
+  end
 end
