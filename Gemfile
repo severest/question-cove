@@ -24,10 +24,6 @@ gem 'jbuilder'
 # Use Capistrano for deployment
 group :development do
   gem 'byebug', platform: :mri
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano3-puma'
-  gem 'capistrano3-delayed-job'
   gem 'web-console'
   gem 'letter_opener_web'
   gem 'brakeman', :require => false
@@ -43,6 +39,11 @@ end
 group :development, :test do
   gem 'factory_bot_rails'
 end
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano3-delayed-job'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
