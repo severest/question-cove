@@ -84,6 +84,10 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => settings['emails']['host'] }
   config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = settings['emails']['mailgun']
+  config.action_mailer.mailgun_settings = {
+    api_key: settings['emails']['mailgun']['api_key'],
+    domain: settings['emails']['mailgun']['domain']
+  }
+
   config.action_mailer.default_options = { from: settings['emails']['from'] }
 end
