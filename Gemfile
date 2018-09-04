@@ -27,6 +27,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
+  gem 'capistrano3-delayed-job'
   gem 'web-console'
   gem 'letter_opener_web'
   gem 'brakeman', :require => false

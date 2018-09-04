@@ -1,5 +1,3 @@
-require "delayed/recipes"
-
 # config valid only for current version of Capistrano
 lock '3.11.0'
 
@@ -34,6 +32,20 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 # Default value for keep_releases is 5
 set :keep_releases, 3
 
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
+# Number of delayed_job workers
+# default value: 1
+set :delayed_job_workers, 1
+
+# String to be prefixed to worker process names
+# This feature allows a prefix name to be placed in front of the process.
+# For example:  reports/delayed_job.0  instead of just delayed_job.0
+set :delayed_job_prefix, 'questioncove'
+
+# Delayed_job queue or queues
+# Set the --queue or --queues option to work from a particular queue.
+# default value: nil
+set :delayed_job_queues, ['mailer']
+
+# Set the roles where the delayed_job process should be started
+# default value: :app
+set :delayed_job_roles, [:app]
