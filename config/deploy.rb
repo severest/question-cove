@@ -44,7 +44,7 @@ set :delayed_job_prefix, 'questioncove'
 # Delayed_job queue or queues
 # Set the --queue or --queues option to work from a particular queue.
 # default value: nil
-set :delayed_job_queues, ['mailers']
+set :delayed_job_queues, ['mailers', 'default']
 
 # Set the roles where the delayed_job process should be started
 # default value: :app
