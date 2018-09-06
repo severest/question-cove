@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_033714) do
+ActiveRecord::Schema.define(version: 2018_09_06_063555) do
 
   create_table "answers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "text"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 2018_09_06_033714) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "user_question_views", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_user_question_views_on_question_id"
+    t.index ["user_id"], name: "index_user_question_views_on_user_id"
+  end
+
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
@@ -134,5 +143,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_033714) do
   add_foreign_key "comments", "users"
   add_foreign_key "questions", "answers", column: "best_answer_id"
   add_foreign_key "questions", "users"
+  add_foreign_key "user_question_views", "questions"
+  add_foreign_key "user_question_views", "users"
   add_foreign_key "votes", "users"
 end

@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
     @question = Question.friendly.includes({answers: {comments: [:user]}}, {comments: [:user]}).find(params[:id])
     @answer = Answer.new
     @answer.question = @question
-    @question.update(views: @question.views+1)
+    @question.increment_view(current_user)
   end
 
   # GET /questions/new

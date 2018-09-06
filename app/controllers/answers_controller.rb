@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         SlackNotifierJob.perform_later("The experts have responded: *#{@answer.question.first_line_for_slug.strip}* #{question_url(@answer.question)}")
-      
+
         format.html { redirect_to @answer.question, notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
       else
@@ -81,7 +81,7 @@ class AnswersController < ApplicationController
     end
 
     def set_answer
-      @answer = Answer.find(params[:id])
+      @answer = Answer.includes({ question: [:user_views] }).find(params[:id])
     end
 
     def get_user_vote

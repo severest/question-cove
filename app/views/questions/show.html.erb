@@ -59,7 +59,7 @@
               <%= fa_icon 'calendar' %> <%= time_ago_in_words(@question.created_at) %> ago
             </div>
             <div>
-              <%= fa_icon 'eye' %> <%= @question.views %>
+              <%= fa_icon 'eye' %> <%= @question.user_views.count() %>
             </div>
           </div>
         </div>

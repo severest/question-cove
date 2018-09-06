@@ -14,6 +14,7 @@ class Question < ApplicationRecord
   belongs_to :best_answer, class_name: "Answer", foreign_key: "best_answer_id"
   belongs_to :user
   has_many :comments, as: :post, dependent: :destroy
+  has_many :user_views, class_name: "UserQuestionView", dependent: :destroy
 
   acts_as_taggable
 
@@ -69,5 +70,12 @@ above to see what it will look like.}
     user_ids.push(self.comments.includes(:user).pluck('users.id'))
     user_ids.push(self.user.id)
     return User.where(id: user_ids.flatten.to_set)
+  end
+
+  def increment_view(user)
+    last_visit = self.user_views.where(user: user).first()
+    if last_visit.nil? or last_visit.created_at < Time.now - 15.minutes
+      self.user_views.create(user: user)
+    end
   end
 end
