@@ -1,0 +1,36 @@
+<table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin: 15px 0;">
+  <tr>
+    <td colspan="2">
+      <p>
+        You have unanswered questions. Use the links below to visit them and take
+        action. You can either:
+      </p>
+      <ol>
+        <li>Use the green checkmark button to identify the answer that addresses your question best</li>
+        <li>Use the blue resend button on the question to resend a notification for help</li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="center">
+      <table width="450px" border="0" cellspacing="0" cellpadding="0" style="margin: 15px;">
+        <% @questions.each do |question| %>
+          <tr height="50px">
+            <td width="250px" style="font-weight: bold;">
+              <%= question.first_line_for_slug.strip %>
+            </td>
+            <td style="text-align:right;">
+              <a
+                href="<%= question_url(question) %>"
+                style="background: #32435E; color: #fff; font-size: 16px; padding: 8px 12px; border-radius: 4px; text-decoration: none;"
+              >
+                Visit question
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+  </tr>
+</table>

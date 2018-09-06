@@ -49,6 +49,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:disable_comment_emails)
+      params.require(:user).permit(:disable_comment_emails, :disable_unanswered_reminder_email)
     end
 end

@@ -11,4 +11,10 @@ class User < ApplicationRecord
     user.save!
     user
   end
+
+  def self.with_unanswered_questions
+    self.joins(:questions)
+      .where(questions: { best_answer_id: nil })
+      .distinct
+  end
 end

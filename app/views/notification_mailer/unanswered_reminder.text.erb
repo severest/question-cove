@@ -1,0 +1,10 @@
+You have unanswered questions. Use the links below to visit them and take
+action. You can either:
+
+Use the green checkmark button to identify the answer that addresses your question best
+OR
+Use the blue resend button on the question to resend a notification for help
+
+<% @questions.each do |question| %>
+<%= question.first_line_for_slug.strip %>: <%= question_url(question) %>
+<% end %>

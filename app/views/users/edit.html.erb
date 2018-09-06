@@ -23,9 +23,16 @@
           </div>
         <% end %>
 
-        <%= f.check_box(:disable_comment_emails) %>
-        <%= f.label(:disable_comment_emails, "Disable emails when others comment on questions you are involved in") %>
+        <div>
+          <%= f.check_box(:disable_comment_emails) %>
+          <%= f.label(:disable_comment_emails, "Disable emails when others comment on questions you are involved in") %>
+        </div>
 
+        <div>
+          <%= f.check_box(:disable_unanswered_reminder_email) %>
+          <%= f.label(:disable_unanswered_reminder_email, "Disable emails reminding you of unanswered questions") %>
+        </div>
+        
         <div class="actions">
           <%= f.submit class: 'btn btn-primary' %>
         </div>

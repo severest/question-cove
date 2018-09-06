@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_02_153946) do
+ActiveRecord::Schema.define(version: 2018_09_06_033714) do
 
   create_table "answers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "text"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2018_09_02_153946) do
     t.datetime "updated_at"
     t.string "slug"
     t.boolean "disable_comment_emails", default: false
+    t.boolean "disable_unanswered_reminder_email"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["slug"], name: "index_users_on_slug", unique: true

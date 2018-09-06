@@ -8,4 +8,11 @@ class NotificationMailerPreview < ActionMailer::Preview
       user: user
     ).new_comment
   end
+
+  def unanswered_reminder
+    user = User.joins(:questions).where(questions: { best_answer_id: nil }).distinct.first
+    NotificationMailer.with(
+      user: user
+    ).unanswered_reminder
+  end
 end

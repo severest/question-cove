@@ -5,4 +5,10 @@ class NotificationMailer < ApplicationMailer
     @user = params[:user]
     mail(:to => @user.email, :subject => 'QuestionCove: There is a new comment')
   end
+
+  def unanswered_reminder
+    @user = params[:user]
+    @questions = @user.questions.where(best_answer_id: nil)
+    mail(:to => @user.email, :subject => 'QuestionCove: You have unanswered questions')
+  end
 end
