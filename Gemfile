@@ -58,3 +58,4 @@ gem 'omniauth-google-oauth2'
 gem 'font-awesome-rails'
 gem 'mailgun-ruby'
 gem 'delayed_job_active_record'
+gem 'whenever', require: false
