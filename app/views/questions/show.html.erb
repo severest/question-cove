@@ -21,13 +21,15 @@
                   <span class="glyphicon glyphicon-pencil" aria-hidden="true" title="Edit"></span>
                 </a>
               </div>
-              <div>
-                <%= form_tag(remind_on_slack_path(@question.id), method: "post") do %>
-                  <button class="btn btn-link" type="submit">
-                    <span class="glyphicon glyphicon-retweet text-info" aria-hidden="true" title="Resend Slack notification"></span>
-                  </button>
-                <% end %>
-              </div>
+              <% if @question.best_answer.nil? %>
+                <div>
+                  <%= form_tag(remind_on_slack_path(@question.id), method: "post") do %>
+                    <button class="btn btn-link" type="submit">
+                      <span class="glyphicon glyphicon-retweet text-info" aria-hidden="true" title="Resend Slack notification"></span>
+                    </button>
+                  <% end %>
+                </div>
+              <% end %>
               <div>
                 <%= link_to @question, method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <span class="glyphicon glyphicon-trash text-danger" aria-hidden="true" title="Delete"></span>
