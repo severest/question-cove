@@ -2,10 +2,17 @@ require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
   test "total vote count" do
-    assert_equal 1, answers(:one).total_votes
+    question = create(:question)
+    answer = create(:answer, question: question)
+    create(:vote, voteable: answer, vote: 1)
+    create(:vote, voteable: answer, vote: 1)
+    create(:vote, voteable: answer, vote: -1)
+    assert_equal 1, answer.total_votes
   end
 
   test "markdown render" do
-    assert_equal "<p><em>bold answer</em> and a <a href=\"http://test.net\">http://test.net</a></p>\n", answers(:one).render_answer
+    question = create(:question)
+    answer = create(:answer, question: question, text: "*bold answer* and a <http://test.net>")
+    assert_equal "<p><em>bold answer</em> and a <a href=\"http://test.net\">http://test.net</a></p>\n", answer.render_answer
   end
 end

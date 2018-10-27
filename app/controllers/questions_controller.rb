@@ -7,20 +7,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @order = 'created_at'
-    if params[:order] == 'views'
-      @order = 'views'
-    elsif params[:order] == 'total_votes'
-      @order = 'total_votes'
-    end
-
-    if params[:s].nil?
-      @questions = Question.order(@order + ' DESC').page(params[:page])
-    else
-      @search_query = params[:s]
-      @questions = Question.where("match(text) against (?)", @search_query).union(Question.tagged_with(@search_query)).order(@order + ' DESC').page(params[:page])
-    end
-
+    @search_query = params[:s]
+    @questions = Question.get_ordered_questions(params[:order], params[:page], @search_query)
     # @most_used_tags = ActsAsTaggableOn::Tag.most_used(10)
   end
 

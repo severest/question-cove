@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
     q = create(:question, user: users[2])
     a = create(:answer, question: q, user: users[3])
     q.best_answer = a
-    q.save()
-    assert_equal 3, User.with_unanswered_questions.count()
+    q.save
+    assert_equal 2, User.with_unanswered_questions.count
   end
 end

@@ -46,6 +46,33 @@ markdown syntax if you are familiar with it. Use the preview tab
 above to see what it will look like.}
   end
 
+  def self.get_ordered_questions(order, page = 1, search_query = nil)
+    case order
+    when 'views'
+      filtered_order = 'views'
+    when 'votes'
+      filtered_order = 'total_votes'
+    when 'unanswered'
+      filtered_order = 'unanswered'
+    else
+      filtered_order = 'created_at'
+    end
+
+    qs = self
+    if !search_query.nil? and search_query != ''
+      qs = where("match(text) against (?)", search_query)
+                     .union(Question.tagged_with(search_query))
+    end
+
+    if filtered_order == 'views'
+      return qs.left_joins(:user_views).group(:id).order(Arel.sql('COUNT(user_question_views.id) desc')).page(page)
+    elsif filtered_order == 'unanswered'
+      return qs.order('best_answer_id').page(page)
+    else
+      return qs.order(filtered_order + ' DESC').page(page)
+    end
+  end
+
   def sorted_answers
     sorted = self.answers.sort_by { |a| [-a.total_votes] }
     if !self.best_answer.nil?

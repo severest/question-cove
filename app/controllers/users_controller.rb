@@ -6,17 +6,11 @@ class UsersController < ApplicationController
 
   def show
     @type = params[:type] || 'questions'
-    @order = 'created_at'
-    if params[:order] == 'views'
-      @order = 'views'
-    elsif params[:order] == 'total_votes'
-      @order = 'total_votes'
-    end
 
     if @type == 'questions'
-      @questions = @user.questions.order(@order + ' DESC').page(params[:page])
+      @questions = @user.questions.get_ordered_questions(params[:order], params[:page])
     else
-      @questions = Question.joins(:answers).where('answers.user_id' => @user.id).distinct.order(@order + ' DESC').page(params[:page])
+      @questions = Question.joins(:answers).where('answers.user_id' => @user.id).distinct.get_ordered_questions(params[:order], params[:page])
     end
 
     @most_used_tags = @user.questions.tag_counts_on(:tags, order: 'count desc', limit: 10)
