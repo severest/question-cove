@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_063555) do
+ActiveRecord::Schema.define(version: 2018_10_28_180603) do
 
   create_table "answers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "text"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_063555) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "views", default: 0
     t.integer "best_answer_id"
     t.integer "total_votes", default: 0
     t.string "slug"
@@ -119,7 +118,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_063555) do
     t.datetime "updated_at"
     t.string "slug"
     t.boolean "disable_comment_emails", default: false
-    t.boolean "disable_unanswered_reminder_email"
+    t.boolean "disable_unanswered_reminder_email", default: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["slug"], name: "index_users_on_slug", unique: true
