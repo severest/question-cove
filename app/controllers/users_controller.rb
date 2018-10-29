@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @questions = Question.joins(:answers).where('answers.user_id' => @user.id).distinct.get_ordered_questions(params[:order], params[:page])
     end
 
-    @most_used_tags = @user.questions.tag_counts_on(:tags, order: 'count desc', limit: 10)
+    @most_used_tags = @user.questions.tag_counts_on(:tags, order: 'taggings_count desc', limit: 5)
     @total_tags = @user.questions.all_tags.sum(:taggings_count)
   end
 
