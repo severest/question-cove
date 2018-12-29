@@ -45,7 +45,7 @@ gem 'capistrano-rails'
 gem 'capistrano3-puma'
 gem 'capistrano3-delayed-job'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.0'
 
 gem 'gravatarify'
 gem 'redcarpet'
