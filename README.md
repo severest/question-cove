@@ -2,7 +2,7 @@
 
 A application to facilitate questions and answers written in Ruby on Rails.
 
-REQUIRES MySQL 5.6 (Full text search)
+REQUIRES MySQL >= 5.6 
 
 ## Development
 
@@ -24,8 +24,6 @@ This app uses Google OAuth to authenticate users. To set up, follow these steps:
 
 - Go to 'https://console.developers.google.com'
 - Select your project.
-- Click 'Enable and manage APIs'.
-- Make sure "Contacts API" and "Google+ API" are on.
 - Go to Credentials, then select the "OAuth consent screen" tab on top, and provide an 'EMAIL ADDRESS' and a 'PRODUCT NAME'
 - Create credentials > OAuth client ID
 - Choose Web application
