@@ -1,0 +1,9 @@
+.git
+tmp/
+log/
+kube/
+test/
+dependencies.yml
+.travis.yml
+Capfile
+coverage

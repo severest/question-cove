@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class QuestionsController < LoggedinController
   before_action :require_login
   before_action :set_question, except: [:index, :new, :create, :get_tags_like, :show]
   before_action :can_edit_redirect, only: [:edit, :update, :destroy, :best_answer, :remind_on_slack]

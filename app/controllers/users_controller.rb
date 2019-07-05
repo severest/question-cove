@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < LoggedinController
   before_action :require_login
   before_action :set_user, only: [:show, :edit, :update]
   before_action :can_edit_redirect, only: [:edit, :update]

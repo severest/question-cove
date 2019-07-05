@@ -1,1 +1,1 @@
-Rails.application.config.slack_webhook_url = 'your-slack-hook-url'
+Rails.application.config.slack_webhook_url = ENV["SLACK_WEBHOOK"]

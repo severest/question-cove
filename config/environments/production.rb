@@ -1,5 +1,4 @@
 Rails.application.configure do
-  settings = YAML.load_file(Rails.root.join('config', 'settings.yml').to_s)
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -75,6 +74,10 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
@@ -82,12 +85,12 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :delayed_job
 
-  config.action_mailer.default_url_options = { :host => settings['emails']['host'] }
+  config.action_mailer.default_url_options = { :host => 'example.com' }
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: settings['emails']['mailgun']['api_key'],
-    domain: settings['emails']['mailgun']['domain']
+    api_key: ENV["MAILGUN_API_KEY"],
+    domain: 'example.com'
   }
 
-  config.action_mailer.default_options = { from: settings['emails']['from'] }
+  config.action_mailer.default_options = { from: 'notifications@example.com' }
 end

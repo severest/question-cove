@@ -1,6 +1,0 @@
-emails:
-  from: no-reply@test.com
-  host: localhost:3000
-  mailgun:
-    api_key: 'api-myapikey'
-    domain: 'mydomain.com'

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < LoggedinController
   before_action :require_login
   before_action :set_question, only: [:destroy, :update]
 

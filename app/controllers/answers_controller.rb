@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class AnswersController < LoggedinController
   before_action :require_login
   before_action :set_answer, only: [:voteup, :votedown, :edit, :update, :destroy]
   before_action :can_edit_redirect, only: [:edit, :update, :destroy]

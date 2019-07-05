@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   get '/notallowed', to: 'sessions#denied', as: 'not_allowed'
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  get 'amialive', to: 'healthcheck#amialive'
 end
