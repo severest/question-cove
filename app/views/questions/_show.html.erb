@@ -35,7 +35,9 @@
         <%= gravatar_tag question.user.email, :size => 20 %> <%= link_to question.user.email, user_path(question.user) %>
       </div>
       <div class="question-summary-item__bottom__item">
-        <%= fa_icon 'calendar' %> <%= time_ago_in_words(question.created_at) %> ago
+        <span data-toggle="tooltip" data-placement="top" title="<%= question.created_at.strftime('%Y-%m-%d %H:%M') %>">
+          <%= fa_icon 'calendar' %> <%= time_ago_in_words(question.created_at) %> ago
+        </span>
       </div>
     </div>
   </div>

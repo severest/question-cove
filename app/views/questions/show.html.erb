@@ -54,13 +54,15 @@
             <%= render partial: 'comments/list', locals: {obj: @question} %>
           </div>
           <div class="question-container__item__meta">
-            <div>
+            <div class="question-container__item__meta__row">
               <%= gravatar_tag @question.user.email, :size => 25 %> <%= link_to @question.user.email, user_path(@question.user) %>
             </div>
-            <div>
-              <%= fa_icon 'calendar' %> <%= time_ago_in_words(@question.created_at) %> ago
+            <div class="question-container__item__meta__row">
+              <span data-toggle="tooltip" data-placement="top" title="<%= @question.created_at.strftime('%Y-%m-%d %H:%M') %>">
+                <%= fa_icon 'calendar' %> <%= time_ago_in_words(@question.created_at) %> ago
+              </span>
             </div>
-            <div>
+            <div class="question-container__item__meta__row">
               <%= fa_icon 'eye' %> <%= @question.user_views.count() %>
             </div>
           </div>
@@ -122,11 +124,13 @@
               <%= render partial: 'comments/list', locals: {obj: answer} %>
             </div>
             <div class="question-container__item__meta">
-              <div>
+              <div class="question-container__item__meta__row">
                 <%= gravatar_tag answer.user.email, :size => 25 %> <%= link_to answer.user.email, user_path(answer.user) %>
               </div>
-              <div>
-                <%= fa_icon 'calendar' %> <%= time_ago_in_words(answer.created_at) %> ago
+              <div class="question-container__item__meta__row">
+                <span data-toggle="tooltip" data-placement="top" title="<%= answer.created_at.strftime('%Y-%m-%d %H:%M') %>">
+                  <%= fa_icon 'calendar' %> <%= time_ago_in_words(answer.created_at) %> ago
+                </span>
               </div>
             </div>
           </div>

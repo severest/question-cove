@@ -129,13 +129,13 @@
       flex-direction: column;
       background: darken($gray-lighter, 10%);
 
-      div {
+      &__row {
         padding: 10px 21px 0;
       }
-      div:last-child {
+      &__row:last-child {
         padding-bottom: 15px;
       }
-      div:first-child {
+      &__row:first-child {
         padding: 15px 15px 0;
       }
     }
