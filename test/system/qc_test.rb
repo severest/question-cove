@@ -11,7 +11,9 @@ class QuestionCoveTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit '/auth/google'
+    visit '/'
+
+    click_on 'Log in using Google'
 
     fill_in "Search for...", with: "a test"
     click_on(class: 'js-test-search')
