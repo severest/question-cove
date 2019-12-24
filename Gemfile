@@ -59,6 +59,7 @@ gem 'font-awesome-rails'
 gem 'mailgun-ruby'
 gem 'delayed_job_active_record'
 gem 'whenever', require: false
+gem 'rails_admin', '~> 2.0'
 
 # https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
 gem 'omniauth-rails_csrf_protection', '~> 0.1'

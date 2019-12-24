@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/manage', as: 'rails_admin'
   resources :questions
   post '/questions/:id/up', to: 'questions#voteup', as: 'questionup'
   post '/questions/:id/down', to: 'questions#votedown', as: 'questiondown'
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   get '/notloggedin', to: 'sessions#new', as: 'login'
   get '/notallowed', to: 'sessions#denied', as: 'not_allowed'
   get '/auth/:provider/callback', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   get 'amialive', to: 'healthcheck#amialive'
 end
