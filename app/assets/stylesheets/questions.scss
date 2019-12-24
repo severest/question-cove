@@ -64,10 +64,6 @@
   }
 }
 
-.tag-list {
-  margin-bottom: 10px;
-}
-
 .label-question-tag {
   background-color: transparent;
   color: $brand-secondary;
@@ -97,6 +93,10 @@
       padding: 20px;
       width: calc(100% - 70px);
       word-wrap: break-word;
+
+      a {
+        text-decoration: underline;
+      }
     }
 
     &__side {
@@ -162,6 +162,16 @@
     padding: 12px;
     width: 380px;
     background: $gray-lighter;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__item__actions {
+    a {
+      text-decoration: none;
+    }
   }
 
   &__item__content {
@@ -198,4 +208,12 @@
   width: 120px;
   background-color: $brand-success;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+.tag-list {
+  margin-bottom: 10px;
+
+  a {
+    text-decoration: none;
+  }
 }
