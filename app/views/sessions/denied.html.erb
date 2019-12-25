@@ -1,7 +1,13 @@
 <div>
   <div class="card welcome-card">
+    <div class="card-header">
+      You do not have access
+    </div>
     <div class="text-center">
-      <h3>You do not have access.</h3>
+      <%= current_user.email %> does not have access to this application.
+    </div>
+    <div class="text-center">
+      <%= link_to 'Logout', logout_path, method: :delete, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
