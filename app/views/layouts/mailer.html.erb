@@ -4,37 +4,44 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
 
-  <body style="font-family: sans-serif; background: #B9E3C6;">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin: 40px 0 100px;">
+  <body style="font-family:sans-serif;background:#B9E3C6;">
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
       <tr>
-        <td align="center">
-          <table width="600px" border="0" cellspacing="0" cellpadding="0" style="background: #fff; border: 1px solid #afafaf; border-radius: 4px;">
+        <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="600" id="emailContainer">
             <tr>
-              <td align="center">
-                <table width="600px" border="0" cellspacing="0" cellpadding="0" style="border-bottom: 1px solid #afafaf; padding: 10px;">
+              <td align="center" valign="top">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" id="emailHeader" style="margin: 20px 0 40px 0;">
                   <tr>
-                    <td align="center" style="font-weight: bold; font-size: 24px;">
-                        <div style="width: 600px; text-align: left;">QuestionCove</div>
+                    <td align="center" valign="top" style="text-align:left;font-weight: bold;font-size: 24px;">
+                      Question Cove
                     </td>
                   </tr>
                 </table>
-
-                <%= yield %>
               </td>
             </tr>
-          </table>
-        </td>
-      </tr>
-
-      <tr>
-        <td align="center">
-          <table width="600px" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td align="center">
-                <table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin: 20px 0 10px;">
+              <td align="center" valign="top">
+                <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
                   <tr>
-                    <td>
-                      <a href="<%= edit_user_url(@user) %>" style="font-size: 11px; color: #333;">Adjust my email settings</a>
+                    <td align="center" valign="top" style="background:#f4fef7;border-radius:4px;box-shadow:0px 0px 6px #dfdfdf">
+                      <%= yield %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">
+                <table border="0" cellpadding="5" cellspacing="0" width="100%" id="emailFooter" style="margin:10px 0 0 0;">
+                  <tr>
+                    <td align="center" valign="top" style="font-size: 11px;color: #959595;">
+                      This email was intended for <%= @user.email %>. Question Cove &#169; 2020
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" valign="top" style="font-size: 11px;color: #959595;">
+                      <a href="<%= edit_user_url(@user) %>" style="font-size: 11px;color: #333;">Adjust my email settings</a>
                     </td>
                   </tr>
                 </table>
