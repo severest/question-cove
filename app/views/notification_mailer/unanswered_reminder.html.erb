@@ -1,29 +1,52 @@
-<table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin: 15px 0;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="newCommentContent">
   <tr>
-    <td colspan="2">
-      <p>
-        You have unanswered questions. Use the links below to visit them and take
-        action. You can either:
-      </p>
-      <ol>
-        <li>Use the green checkmark button to identify the answer that addresses your question best</li>
-        <li>Use the blue resend button on the question to resend a notification for help</li>
-      </ol>
+    <td align="center" valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 5px 0;">
+        <tr>
+          <td align="center" valign="top" style="text-align:left;font-weight: bold;font-size: 18px;">
+            You have unanswered questions.
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
-
   <tr>
-    <td colspan="2" align="center">
-      <table width="450px" border="0" cellspacing="0" cellpadding="0" style="margin: 15px;">
+    <td align="center" valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 10px 0;">
+        <tr>
+          <td align="center" valign="top" style="text-align:left;font-size:14px;">
+            Use the links below to visit them and take action. You can either:
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 20px 0;">
+        <tr>
+          <td align="center" valign="top" style="text-align:left;">
+            <ol style="margin:0;padding-left:18px;font-size:14px;">
+              <li>Use the green checkmark to select the best answer to your question</li>
+              <li>Use the blue resend button to resend a notification for more answers</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <table border="0" cellpadding="20px" cellspacing="0" width="80%" style="margin:0 0 10px 0;">
         <% @questions.each do |question| %>
-          <tr height="50px">
-            <td width="250px" style="font-weight: bold;">
+          <tr>
+            <td align="center" valign="middle" style="font-weight:bold;text-align:left;border-top:1px solid #eaeaea">
               <%= question.first_line_for_slug.strip %>
             </td>
-            <td style="text-align:right;">
+            <td align="center" valign="middle" width="125px" style="text-align:right;border-top:1px solid #eaeaea">
               <a
                 href="<%= question_url(question) %>"
-                style="background: #32435E; color: #fff; font-size: 16px; padding: 8px 12px; border-radius: 4px; text-decoration: none;"
+                style="background:#32435E;color:#fff;font-size:16px;padding:8px 12px;border-radius:4px;text-decoration:none;"
               >
                 Visit question
               </a>
