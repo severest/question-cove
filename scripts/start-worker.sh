@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-QUEUES=mailers,default bundle exec rake jobs:work
+QUEUES=mailers,default bin/rails jobs:work

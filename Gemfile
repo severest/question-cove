@@ -58,6 +58,7 @@ gem 'omniauth-google-oauth2'
 gem 'font-awesome-rails'
 gem 'mailgun-ruby'
 gem 'delayed_job_active_record'
+gem 'delayed_job_recurring'
 gem 'whenever', require: false
 gem 'rails_admin', '~> 2.0'
 
