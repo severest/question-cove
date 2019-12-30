@@ -40,11 +40,6 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano3-puma'
-gem 'capistrano3-delayed-job'
-
 gem 'bootstrap-sass', '~> 3.4.0'
 
 gem 'gravatarify'
@@ -59,7 +54,6 @@ gem 'font-awesome-rails'
 gem 'mailgun-ruby'
 gem 'delayed_job_active_record'
 gem 'delayed_job_recurring'
-gem 'whenever', require: false
 gem 'rails_admin', '~> 2.0'
 
 # https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
