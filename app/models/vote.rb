@@ -3,6 +3,6 @@ class Vote < ApplicationRecord
   belongs_to :user
 
   def rails_admin_label
-    "#{user.name} upvotes #{voteable_type} ##{votable.id}"
+    "#{user.name} upvotes #{voteable_type} ##{voteable.id}"
   end
 end
