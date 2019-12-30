@@ -9,6 +9,8 @@ RailsAdmin.config do |config|
     current_user
   end
 
+  RailsAdmin.config {|c| c.label_methods << :rails_admin_label}
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -47,4 +49,36 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Answer' do
+    list do
+      include_all_fields
+      exclude_fields :best_answer_question, :comments, :votes
+    end
+  end
+
+  config.model 'Question' do
+    list do
+      include_all_fields
+      exclude_fields :user_views, :comments, :votes, :answers, :slug
+    end
+  end
+
+  config.model 'User' do
+    list do
+      include_all_fields
+      exclude_fields :question_views, :questions, :answers, :slug
+    end
+  end
+
+  config.included_models = [
+    "ActsAsTaggableOn::Tag",
+    "Delayed::Job",
+    "Answer",
+    "Comment",
+    "Question",
+    "UserQuestionView",
+    "User",
+    "Vote",
+  ]
 end

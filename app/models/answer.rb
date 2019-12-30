@@ -19,4 +19,8 @@ class Answer < ApplicationRecord
   def render_answer
     @@markdown.render(self.text)
   end
+
+  def rails_admin_label
+    "#{user.name} answers Question ##{question.id}"
+  end
 end

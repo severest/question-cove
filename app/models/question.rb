@@ -38,6 +38,10 @@ class Question < ApplicationRecord
     return str
   end
 
+  def rails_admin_label
+    self.first_line_for_slug
+  end
+
   def self.starting_text
     %{# Question title
 

@@ -7,4 +7,8 @@ class Comment < ApplicationRecord
   def render_comment
     @@markdown.render(self.text)
   end
+
+  def rails_admin_label
+    "#{user.name} comments on #{post_type} ##{post.id}"
+  end
 end
