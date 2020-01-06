@@ -2,8 +2,11 @@ RailsAdmin.config do |config|
 
   config.parent_controller = '::ApplicationController'
   config.authenticate_with do
-    redirect_to main_app.login_path if current_user == nil
-    redirect_to main_app.root_path if !current_user.is_staff
+    if current_user.nil?
+      redirect_to main_app.login_path
+    elsif !current_user.is_staff
+      redirect_to main_app.root_path
+    end
   end
   config.current_user_method do
     current_user
