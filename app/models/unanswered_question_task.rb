@@ -1,7 +1,7 @@
 class UnansweredQuestionTask
   include Delayed::RecurringJob
   run_every 3.months
-  run_at Time.now.utc.beginning_of_month
+  run_at Time.now.utc.beginning_of_year
   timezone 'US/Pacific'
   queue 'mailers'
 
