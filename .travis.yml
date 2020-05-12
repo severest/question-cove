@@ -15,7 +15,7 @@ script:
   - bin/rails test
   - bin/rails test:system
 before_script:
-  - mysql -u root -e 'create database questioncove_test;create user 'qcuser'@'%';grant all privileges on questioncove_test.* to 'qcuser'@'%';'
+  - mysql -u root -e "create database questioncove_test;create user 'qcuser'@'%';grant all privileges on questioncove_test.* to 'qcuser'@'%';"
 after_success:
   - bundle exec codeclimate-test-reporter
 dist: trusty
