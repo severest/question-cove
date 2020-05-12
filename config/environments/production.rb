@@ -85,11 +85,11 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :delayed_job
 
-  config.action_mailer.default_url_options = { :host => ENV["MAIL_DOMAIN"] }
+  config.action_mailer.default_url_options = { :host => ENV["MAIL_HOST"] }
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: ENV["MAILGUN_API_KEY"],
-    domain: ENV["MAIL_DOMAIN"]
+    domain: ENV["MAILGUN_DOMAIN"]
   }
 
   config.action_mailer.default_options = { from: ENV["MAIL_FROM"] }
