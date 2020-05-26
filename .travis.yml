@@ -3,7 +3,7 @@ rvm:
   - 2.7.1
 install:
   - wget -N https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz -P ~/
-  - tar xvzf ~/geckodriver-v0.26.0-linux64.tar.gz
+  - tar xvzf ~/geckodriver-v0.26.0-linux64.tar.gz -C ~/
   - rm ~/geckodriver-v0.26.0-linux64.tar.gz
   - sudo mv -f ~/geckodriver /usr/local/share/
   - sudo chmod +x /usr/local/share/geckodriver
