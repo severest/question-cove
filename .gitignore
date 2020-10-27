@@ -27,3 +27,5 @@ brakeman.html
 capybara-*.png
 
 public/assets/
+
+.envrc
