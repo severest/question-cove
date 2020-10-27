@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require select2
+//= require simplemde.min
 //= require_tree .
 
 var enableHighlightJS = function() {
@@ -33,4 +34,8 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   $('[data-toggle="tooltip"]').tooltip();
+
+  $('.mde').each(function(editor) {
+    new SimpleMDE({ element: editor, forceSync: true });
+  });
 });
