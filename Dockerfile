@@ -1,7 +1,7 @@
 FROM ruby:2.7.1-alpine as build-env
 
 ARG RAILS_ROOT=/questioncove
-ARG BUILD_PACKAGES="build-base"
+ARG BUILD_PACKAGES="build-base git"
 ARG DEV_PACKAGES="mysql-dev"
 ARG RUBY_PACKAGES="tzdata nodejs"
 ARG BUNDLER_VERSION="2.1.4"
