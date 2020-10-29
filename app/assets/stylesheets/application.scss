@@ -196,6 +196,14 @@ textarea {
 
   .text-center {
     padding: 20px;
+
+    div {
+      margin-top: 8px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 
   .btn-google-login {

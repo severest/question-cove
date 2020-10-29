@@ -50,6 +50,7 @@ gem 'select2-rails', '3.5.3'
 gem 'active_record_union'
 gem 'friendly_id'
 gem 'omniauth-google-oauth2'
+gem "omniauth-sevengeese", :git => "git://github.com/severest/omniauth-sevengeese.git"
 gem 'font-awesome-rails'
 gem 'mailgun-ruby'
 gem 'delayed_job_active_record'
