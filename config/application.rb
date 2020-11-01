@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -24,6 +24,6 @@ module QuestionCove
 
     config.slack_notifications = false
 
-    # config.load_defaults "6.0" # enables zeitwerk mode in CRuby
+    config.load_defaults "6.0" # enables zeitwerk mode in CRuby
   end
 end

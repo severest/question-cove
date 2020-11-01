@@ -11,7 +11,7 @@ class Question < ApplicationRecord
 
   has_many :answers, dependent: :destroy
   has_many :votes, as: :voteable, dependent: :destroy
-  belongs_to :best_answer, class_name: "Answer", foreign_key: "best_answer_id"
+  belongs_to :best_answer, class_name: "Answer", foreign_key: "best_answer_id", optional: true
   belongs_to :user
   has_many :comments, as: :post, dependent: :destroy
   has_many :user_views, class_name: "UserQuestionView", dependent: :destroy
