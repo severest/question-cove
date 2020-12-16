@@ -2,7 +2,9 @@ require "simplecov"
 SimpleCov.start
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+ENV['LOGIN_GOOGLE'] = '1'
+ENV['LOGIN_SG'] = '1'
+require_relative '../config/environment'
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
