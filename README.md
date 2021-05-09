@@ -1,4 +1,4 @@
-# Question Cove [![Travis build status](https://travis-ci.org/severest/question-cove.svg?branch=master)](https://travis-ci.org/severest/question-cove) ![Code Climate](https://codeclimate.com/github/severest/question-cove/badges/gpa.svg)
+# Question Cove [![Build Status](https://sean.semaphoreci.com/badges/question-cove/branches/master.svg?style=shields)](https://sean.semaphoreci.com/projects/question-cove)
 
 A application to facilitate questions and answers written in Ruby on Rails.
 
@@ -32,8 +32,3 @@ This app uses Google OAuth to authenticate users. To set up, follow these steps:
 - Add email domains to `config.domain_whitelist` in `config/initializers/omniauth.rb`
   - Allow all emails: `Regexp.union(/.*/)`
   - Multiple domains: `Regexp.union(/@domain1.com/, /@domain2.com/)`
-
-
-## Deployment
-
-The application is setup to use [Capistrano](https://github.com/capistrano/capistrano) as a deployment method. Simply add the appropriate environment files to the directory `config/deploy/`. You can learn more about Capistrano by visiting the link.
