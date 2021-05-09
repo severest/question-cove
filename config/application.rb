@@ -25,5 +25,9 @@ module QuestionCove
     config.slack_notifications = false
 
     config.load_defaults "6.0" # enables zeitwerk mode in CRuby
+
+    config.assets.configure do |env|
+        env.export_concurrent = false
+    end
   end
 end

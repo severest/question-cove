@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/severest/omniauth-sevengeese.git
+  remote: https://github.com/severest/omniauth-sevengeese.git
   revision: 6e3ea1fab18807c01f76b3ce3605208c22d4392b
   specs:
     omniauth-sevengeese (1.3.0)
