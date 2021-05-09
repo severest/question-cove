@@ -15,7 +15,7 @@ blocks:
             - sem-version ruby 2.7.1
             - sem-version node 12.16.3
             - bundle config set deployment 'true'
-          	- bundle install --path vendor/bundle
+            - bundle install --path vendor/bundle
             - 'bin/rails assets:precompile'
             - cache store
       env_vars:
