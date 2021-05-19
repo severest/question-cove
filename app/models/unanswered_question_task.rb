@@ -8,7 +8,7 @@ class UnansweredQuestionTask
   def perform
     users = User.with_unanswered_questions.where(disable_unanswered_reminder_email: false)
     users.each do |user|
-      NotificationMailer.with(user: user).unanswered_reminder.deliver_later
+      NotificationMailer.with(user: user).unanswered_reminder.deliver_later if Rails.application.config.email_notifications
     end
   end
 end

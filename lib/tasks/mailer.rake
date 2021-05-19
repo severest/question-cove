@@ -5,7 +5,7 @@ namespace :mailer do
     puts "Now sending reminder email to #{users.count()} users..."
     users.each do |user|
       puts "...#{user.email}"
-      NotificationMailer.with(user: user).unanswered_reminder.deliver_later
+      NotificationMailer.with(user: user).unanswered_reminder.deliver_later if Rails.application.config.email_notifications
     end
     puts "DONE"
   end

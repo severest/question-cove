@@ -15,7 +15,7 @@ class CommentsController < LoggedinController
       users_to_email = question.all_users_involved.where(disable_comment_emails: false)
                          .select { |user| user != @comment.user }
       users_to_email.each do |user|
-        NotificationMailer.with(comment: @comment, question: question, user: user).new_comment.deliver_later
+        NotificationMailer.with(comment: @comment, question: question, user: user).new_comment.deliver_later if Rails.application.config.email_notifications
       end
 
       redirect_to get_redirect_url(@comment), notice: 'Comment was successfully created.'
