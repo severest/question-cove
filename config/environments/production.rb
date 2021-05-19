@@ -92,7 +92,6 @@ Rails.application.configure do
       api_key: ENV["MAILGUN_API_KEY"],
       domain: ENV["MAILGUN_DOMAIN"]
     }
-    config.email_notifications = true
   else
     config.action_mailer.delivery_method = :file
     config.action_mailer.perform_deliveries = false

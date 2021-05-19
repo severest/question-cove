@@ -23,6 +23,7 @@ module QuestionCove
     config.action_view.sanitized_allowed_tags = ['strong', 'em', 'a', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'code', 'img', 'blockquote', 'br', 'p', 'div', 'li', 'ol', 'i', 'span', 'hr']
 
     config.slack_notifications = false
+    config.email_notifications = true
 
     config.load_defaults "6.0" # enables zeitwerk mode in CRuby
 
